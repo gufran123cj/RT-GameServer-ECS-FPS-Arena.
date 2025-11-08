@@ -319,60 +319,100 @@ void GameServer::sendSnapshots() {
             static int debugServerComponentCount = 0;
             bool shouldLog = (debugServerComponentCount < 20);
             
+            // Log entity info
+            if (shouldLog && playerEntities.size() > 0 && playerEntities[0] == entityID) {
+                std::cout << "[DEBUG SERVER] Entity " << entityID << " components: pos=" << (pos ? "YES" : "NO")
+                          << ", player=" << (playerComp ? "YES" : "NO")
+                          << ", input=" << (input ? "YES" : "NO")
+                          << ", transform=" << (transform ? "YES" : "NO")
+                          << ", health=" << (health ? "YES" : "NO") << std::endl;
+            }
+            
             if (pos) {
                 ComponentTypeID typeID = pos->getTypeID();
-                uint16_t size = static_cast<uint16_t>(pos->getSerializedSize());
+                size_t actualSize = pos->getSerializedSize();
+                uint16_t size = static_cast<uint16_t>(actualSize);
                 if (shouldLog) {
                     std::cout << "[DEBUG SERVER] Serializing Position: typeID=" << typeID 
-                              << ", size=" << size << std::endl;
+                              << ", calculatedSize=" << actualSize << ", writtenSize=" << size << std::endl;
                 }
                 writer.write(typeID);
                 writer.write(size);
+                size_t beforeWrite = writer.getSize();
                 pos->serialize(writer);
+                size_t afterWrite = writer.getSize();
+                if (shouldLog) {
+                    std::cout << "[DEBUG SERVER] Position written: " << (afterWrite - beforeWrite) << " bytes" << std::endl;
+                }
             }
             if (playerComp) {
                 ComponentTypeID typeID = playerComp->getTypeID();
-                uint16_t size = static_cast<uint16_t>(playerComp->getSerializedSize());
+                size_t actualSize = playerComp->getSerializedSize();
+                uint16_t size = static_cast<uint16_t>(actualSize);
                 if (shouldLog) {
                     std::cout << "[DEBUG SERVER] Serializing PlayerComponent: typeID=" << typeID 
-                              << ", size=" << size << ", playerID=" << playerComp->playerID << std::endl;
+                              << ", calculatedSize=" << actualSize << ", writtenSize=" << size 
+                              << ", playerID=" << playerComp->playerID << std::endl;
                 }
                 writer.write(typeID);
                 writer.write(size);
+                size_t beforeWrite = writer.getSize();
                 playerComp->serialize(writer);
+                size_t afterWrite = writer.getSize();
+                if (shouldLog) {
+                    std::cout << "[DEBUG SERVER] PlayerComponent written: " << (afterWrite - beforeWrite) << " bytes" << std::endl;
+                }
             }
             if (input) {
                 ComponentTypeID typeID = input->getTypeID();
-                uint16_t size = static_cast<uint16_t>(input->getSerializedSize());
+                size_t actualSize = input->getSerializedSize();
+                uint16_t size = static_cast<uint16_t>(actualSize);
                 if (shouldLog) {
                     std::cout << "[DEBUG SERVER] Serializing InputComponent: typeID=" << typeID 
-                              << ", size=" << size << std::endl;
+                              << ", calculatedSize=" << actualSize << ", writtenSize=" << size << std::endl;
                 }
                 writer.write(typeID);
                 writer.write(size);
+                size_t beforeWrite = writer.getSize();
                 input->serialize(writer);
+                size_t afterWrite = writer.getSize();
+                if (shouldLog) {
+                    std::cout << "[DEBUG SERVER] InputComponent written: " << (afterWrite - beforeWrite) << " bytes" << std::endl;
+                }
             }
             if (transform) {
                 ComponentTypeID typeID = transform->getTypeID();
-                uint16_t size = static_cast<uint16_t>(transform->getSerializedSize());
+                size_t actualSize = transform->getSerializedSize();
+                uint16_t size = static_cast<uint16_t>(actualSize);
                 if (shouldLog) {
                     std::cout << "[DEBUG SERVER] Serializing Transform: typeID=" << typeID 
-                              << ", size=" << size << std::endl;
+                              << ", calculatedSize=" << actualSize << ", writtenSize=" << size << std::endl;
                 }
                 writer.write(typeID);
                 writer.write(size);
+                size_t beforeWrite = writer.getSize();
                 transform->serialize(writer);
+                size_t afterWrite = writer.getSize();
+                if (shouldLog) {
+                    std::cout << "[DEBUG SERVER] Transform written: " << (afterWrite - beforeWrite) << " bytes" << std::endl;
+                }
             }
             if (health) {
                 ComponentTypeID typeID = health->getTypeID();
-                uint16_t size = static_cast<uint16_t>(health->getSerializedSize());
+                size_t actualSize = health->getSerializedSize();
+                uint16_t size = static_cast<uint16_t>(actualSize);
                 if (shouldLog) {
                     std::cout << "[DEBUG SERVER] Serializing Health: typeID=" << typeID 
-                              << ", size=" << size << std::endl;
+                              << ", calculatedSize=" << actualSize << ", writtenSize=" << size << std::endl;
                 }
                 writer.write(typeID);
                 writer.write(size);
+                size_t beforeWrite = writer.getSize();
                 health->serialize(writer);
+                size_t afterWrite = writer.getSize();
+                if (shouldLog) {
+                    std::cout << "[DEBUG SERVER] Health written: " << (afterWrite - beforeWrite) << " bytes" << std::endl;
+                }
             }
             
             if (shouldLog) {

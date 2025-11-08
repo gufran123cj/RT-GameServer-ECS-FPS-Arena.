@@ -4,6 +4,16 @@
 #include <chrono>
 #include <limits>
 
+// Forward declarations for component types
+namespace game::components {
+    class Position;
+    class Velocity;
+    class Health;
+    class PlayerComponent;
+    class Transform;
+    class InputComponent;
+}
+
 namespace game {
 
 // Core types
@@ -13,6 +23,17 @@ using SystemTypeID = uint32_t;
 using PlayerID = uint32_t;
 using RoomID = uint32_t;
 using Tick = uint64_t;
+
+// Component Type IDs - MUST BE CONSISTENT BETWEEN SERVER AND CLIENT
+// These are fixed IDs to ensure network compatibility
+namespace ComponentType {
+    constexpr ComponentTypeID Position = 0;
+    constexpr ComponentTypeID Velocity = 1;
+    constexpr ComponentTypeID Health = 2;
+    constexpr ComponentTypeID PlayerComponent = 3;
+    constexpr ComponentTypeID Transform = 4;
+    constexpr ComponentTypeID InputComponent = 5;
+}
 
 // Network types
 using PacketID = uint16_t;

@@ -230,6 +230,30 @@ int main(int argc, char* argv[]) {
                                                           << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
                                             }
                                         }
+                                    } else if (typeID == ComponentType::Transform) {
+                                        // Transform component - skip it (we use Position instead)
+                                        // Skip the component data by moving reader forward
+                                        reader.setPosition(componentDataStart + componentSize);
+                                        deserialized = true; // Mark as handled
+                                        if (debugComponentTypeCount <= 20) {
+                                            std::cout << "[DEBUG] Skipping Transform component (size=" << componentSize << " bytes)" << std::endl;
+                                        }
+                                    } else if (typeID == ComponentType::Health) {
+                                        // Health component - skip it (not needed for viewer)
+                                        // Skip the component data by moving reader forward
+                                        reader.setPosition(componentDataStart + componentSize);
+                                        deserialized = true; // Mark as handled
+                                        if (debugComponentTypeCount <= 20) {
+                                            std::cout << "[DEBUG] Skipping Health component (size=" << componentSize << " bytes)" << std::endl;
+                                        }
+                                    } else if (typeID == ComponentType::Velocity) {
+                                        // Velocity component - skip it (not needed for viewer)
+                                        // Skip the component data by moving reader forward
+                                        reader.setPosition(componentDataStart + componentSize);
+                                        deserialized = true; // Mark as handled
+                                        if (debugComponentTypeCount <= 20) {
+                                            std::cout << "[DEBUG] Skipping Velocity component (size=" << componentSize << " bytes)" << std::endl;
+                                        }
                                     }
                                     
                                     // Always ensure reader is at the correct position after deserialization
