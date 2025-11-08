@@ -77,6 +77,14 @@ void GameServer::processPackets() {
             continue;
         }
         
+        // Debug: Log all received packets (only first few times)
+        static int debugPacketCount = 0;
+        if (debugPacketCount < 5) {
+            std::cout << "[DEBUG] Received packet type=" << (int)header.type 
+                      << " from " << packet.from.ip << ":" << packet.from.port << std::endl;
+            debugPacketCount++;
+        }
+        
         // Find or create player
         Player* player = nullptr;
         for (auto& [id, p] : players) {
@@ -131,6 +139,14 @@ void GameServer::processPackets() {
                         player->currentRoom = defaultRoom->id;
                         std::cout << "[DEBUG] HEARTBEAT from Player " << player->id 
                                   << " - added to room " << defaultRoom->id << std::endl;
+                    } else {
+                        // Debug: Log HEARTBEAT from known player
+                        static int debugHeartbeatKnownCount = 0;
+                        if (debugHeartbeatKnownCount < 3) {
+                            std::cout << "[DEBUG] HEARTBEAT from Player " << player->id 
+                                      << " (room=" << player->currentRoom << ")" << std::endl;
+                            debugHeartbeatKnownCount++;
+                        }
                     }
                     break;
                 default:
@@ -183,8 +199,32 @@ void GameServer::sendSnapshots() {
     }
     lastSnapshotTick = serverTick;
     
+    // Debug: Log snapshot attempt
+    static int debugSnapshotAttemptCount = 0;
+    if (debugSnapshotAttemptCount < 5) {
+        std::cout << "[DEBUG] sendSnapshots called at tick " << serverTick 
+                  << ", players.size()=" << players.size() << std::endl;
+        debugSnapshotAttemptCount++;
+    }
+    
+    if (players.empty()) {
+        static int debugEmptyPlayersCount = 0;
+        if (debugEmptyPlayersCount < 2) {
+            std::cout << "[DEBUG] sendSnapshots: No players connected yet" << std::endl;
+            debugEmptyPlayersCount++;
+        }
+        return;
+    }
+    
     for (auto& [playerID, player] : players) {
-        if (!player->connected) continue;
+        if (!player->connected) {
+            static int debugDisconnectedCount = 0;
+            if (debugDisconnectedCount < 2) {
+                std::cout << "[DEBUG] Player " << playerID << " is not connected" << std::endl;
+                debugDisconnectedCount++;
+            }
+            continue;
+        }
         
         // Build snapshot packet
         net::PacketWriter writer;
@@ -219,15 +259,25 @@ void GameServer::sendSnapshots() {
             }
         }
         
-        // Send snapshot
+        // Send snapshot (even if empty - viewer needs to know there are no players)
         if (writer.getSize() > sizeof(net::PacketHeader)) {
-            socket->send(player->address, writer.getData(), writer.getSize());
-            // Debug: Log snapshot sending (only first few times)
-            static int debugSnapshotCount = 0;
-            if (debugSnapshotCount < 3) {
-                std::cout << "[DEBUG] Snapshot sent to Player " << playerID 
-                          << " (" << playerCount << " players, " << writer.getSize() << " bytes)" << std::endl;
-                debugSnapshotCount++;
+            if (socket->send(player->address, writer.getData(), writer.getSize())) {
+                // Debug: Log snapshot sending (only first few times)
+                static int debugSnapshotCount = 0;
+                if (debugSnapshotCount < 3) {
+                    std::cout << "[DEBUG] Snapshot sent to Player " << playerID 
+                              << " at " << player->address.ip << ":" << player->address.port
+                              << " (" << (int)playerCount << " players, " << writer.getSize() << " bytes)" << std::endl;
+                    debugSnapshotCount++;
+                }
+            } else {
+                std::cout << "[ERROR] Failed to send snapshot to Player " << playerID << std::endl;
+            }
+        } else {
+            static int debugEmptySnapshotCount = 0;
+            if (debugEmptySnapshotCount < 2) {
+                std::cout << "[DEBUG] Snapshot too small to send (only header)" << std::endl;
+                debugEmptySnapshotCount++;
             }
         }
     }

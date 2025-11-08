@@ -49,12 +49,16 @@ int main(int argc, char* argv[]) {
     header.serverTick = 0;
     header.playerID = INVALID_PLAYER;
     
-    socket.send(serverAddress, &header, sizeof(header));
+    if (socket.send(serverAddress, &header, sizeof(header))) {
+        std::cout << "[DEBUG] CONNECT packet sent to server" << std::endl;
+    } else {
+        std::cout << "[ERROR] Failed to send CONNECT packet!" << std::endl;
+    }
     std::cout << "Connected to server " << serverIP << ":" << serverPort << std::endl;
     std::cout << "Viewing game map (updates every 1 second)...\n" << std::endl;
     
     // Wait a bit for server to process CONNECT
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     
     // Player data storage
     std::vector<PlayerView> players;
@@ -78,14 +82,17 @@ int main(int argc, char* argv[]) {
             heartbeatHeader.serverTick = 0;
             heartbeatHeader.playerID = INVALID_PLAYER;
             
-            socket.send(serverAddress, &heartbeatHeader, sizeof(heartbeatHeader));
-            lastHeartbeat = now;
-            
-            // Debug: Log heartbeat sending (only first few times)
-            static int debugHeartbeatCount = 0;
-            if (debugHeartbeatCount < 3) {
-                std::cout << "[DEBUG] HEARTBEAT sent to server (seq=" << heartbeatSequence - 1 << ")" << std::endl;
-                debugHeartbeatCount++;
+            if (socket.send(serverAddress, &heartbeatHeader, sizeof(heartbeatHeader))) {
+                lastHeartbeat = now;
+                
+                // Debug: Log heartbeat sending (only first few times)
+                static int debugHeartbeatCount = 0;
+                if (debugHeartbeatCount < 3) {
+                    std::cout << "[DEBUG] HEARTBEAT sent to server (seq=" << heartbeatSequence - 1 << ")" << std::endl;
+                    debugHeartbeatCount++;
+                }
+            } else {
+                std::cout << "[ERROR] Failed to send HEARTBEAT!" << std::endl;
             }
         }
         
