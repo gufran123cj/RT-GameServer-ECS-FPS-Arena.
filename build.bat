@@ -35,6 +35,7 @@ REM MinGW header uyumluluk flag'leri
     -Iphysics ^
     -Imatchmaker ^
     -Ianti-cheat-lite ^
+    -Icomponents ^
     src\main.cpp ^
     src\Server.cpp ^
     ecs\Component.cpp ^
