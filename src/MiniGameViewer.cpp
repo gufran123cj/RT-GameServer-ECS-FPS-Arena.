@@ -55,12 +55,12 @@ int main(int argc, char* argv[]) {
     header.playerID = INVALID_PLAYER;
     
     if (socket.send(serverAddress, &header, sizeof(header))) {
-        std::cout << "[DEBUG] CONNECT packet sent to server" << std::endl;
+        // std::cout << "[DEBUG] CONNECT packet sent to server" << std::endl;
     } else {
         std::cout << "[ERROR] Failed to send CONNECT packet!" << std::endl;
     }
     std::cout << "Connected to server " << serverIP << ":" << serverPort << std::endl;
-    std::cout << "Viewing game map (updates every 1 second)...\n" << std::endl;
+    std::cout << "Viewing game map (updates continuously)...\n" << std::endl;
     
     // Wait a bit for server to process CONNECT
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -91,11 +91,11 @@ int main(int argc, char* argv[]) {
                 lastHeartbeat = now;
                 
                 // Debug: Log heartbeat sending (only first few times)
-                static int debugHeartbeatCount = 0;
-                if (debugHeartbeatCount < 3) {
-                    std::cout << "[DEBUG] HEARTBEAT sent to server (seq=" << heartbeatSequence - 1 << ")" << std::endl;
-                    debugHeartbeatCount++;
-                }
+                // static int debugHeartbeatCount = 0;
+                // if (debugHeartbeatCount < 3) {
+                //     std::cout << "[DEBUG] HEARTBEAT sent to server (seq=" << heartbeatSequence - 1 << ")" << std::endl;
+                //     debugHeartbeatCount++;
+                // }
             } else {
                 std::cout << "[ERROR] Failed to send HEARTBEAT!" << std::endl;
             }
@@ -116,19 +116,19 @@ int main(int argc, char* argv[]) {
                         snapshotCount++;
                         
                         // Debug: Log snapshot reception (only first few times)
-                        static int debugSnapshotReceiveCount = 0;
-                        if (debugSnapshotReceiveCount < 3) {
-                            std::cout << "[DEBUG] SNAPSHOT received! Tick=" << recvHeader.serverTick 
-                                      << ", Size=" << packet.size << " bytes" << std::endl;
-                            debugSnapshotReceiveCount++;
-                        }
+                        // static int debugSnapshotReceiveCount = 0;
+                        // if (debugSnapshotReceiveCount < 3) {
+                        //     std::cout << "[DEBUG] SNAPSHOT received! Tick=" << recvHeader.serverTick 
+                        //               << ", Size=" << packet.size << " bytes" << std::endl;
+                        //     debugSnapshotReceiveCount++;
+                        // }
                         
                         // Phase 4: Component-based snapshot deserialization
                         uint8_t entityCount = 0;
                         if (reader.read(entityCount)) {
-                            if (debugSnapshotReceiveCount <= 3) {
-                                std::cout << "[DEBUG] Snapshot contains " << (int)entityCount << " entities" << std::endl;
-                            }
+                            // if (debugSnapshotReceiveCount <= 3) {
+                            //     std::cout << "[DEBUG] Snapshot contains " << (int)entityCount << " entities" << std::endl;
+                            // }
                             
                             players.clear();
                             players.reserve(entityCount);
@@ -169,16 +169,16 @@ int main(int argc, char* argv[]) {
                                     size_t componentDataStart = reader.getOffset();
                                     
                                     // Debug: Log component type IDs (always log first 20 components)
-                                    static int debugComponentTypeCount = 0;
-                                    if (debugComponentTypeCount < 20) {
-                                        std::cout << "[DEBUG VIEWER] Entity " << (int)i << " Component " << (int)j 
-                                                  << ": typeID=" << typeID 
-                                                  << " (Position=" << Position::getStaticTypeID()
-                                                  << ", Player=" << PlayerComponent::getStaticTypeID()
-                                                  << ", Input=" << InputComponent::getStaticTypeID()
-                                                  << "), size=" << componentSize << std::endl;
-                                        debugComponentTypeCount++;
-                                    }
+                                    // static int debugComponentTypeCount = 0;
+                                    // if (debugComponentTypeCount < 20) {
+                                    //     std::cout << "[DEBUG VIEWER] Entity " << (int)i << " Component " << (int)j 
+                                    //               << ": typeID=" << typeID 
+                                    //               << " (Position=" << Position::getStaticTypeID()
+                                    //               << ", Player=" << PlayerComponent::getStaticTypeID()
+                                    //               << ", Input=" << InputComponent::getStaticTypeID()
+                                    //               << "), size=" << componentSize << std::endl;
+                                    //     debugComponentTypeCount++;
+                                    // }
                                     
                                     // Deserialize based on component type
                                     bool deserialized = false;
@@ -191,28 +191,28 @@ int main(int argc, char* argv[]) {
                                             view.y = pos.value.y;
                                             view.z = pos.value.z;
                                             deserialized = true;
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[DEBUG] Position deserialized: (" << view.x << ", " << view.y << ", " << view.z << ")" << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[DEBUG] Position deserialized: (" << view.x << ", " << view.y << ", " << view.z << ")" << std::endl;
+                                            // }
                                         } else {
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[ERROR] Position deserialization failed! Expected size=" << componentSize 
-                                                          << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[ERROR] Position deserialization failed! Expected size=" << componentSize 
+                                            //               << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
+                                            // }
                                         }
                                     } else if (typeID == PlayerComponent::getStaticTypeID()) {
                                         PlayerComponent playerComp;
                                         if (playerComp.deserialize(reader)) {
                                             view.id = playerComp.playerID;
                                             deserialized = true;
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[DEBUG] PlayerComponent deserialized: playerID=" << view.id << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[DEBUG] PlayerComponent deserialized: playerID=" << view.id << std::endl;
+                                            // }
                                         } else {
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[ERROR] PlayerComponent deserialization failed! Expected size=" << componentSize 
-                                                          << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[ERROR] PlayerComponent deserialization failed! Expected size=" << componentSize 
+                                            //               << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
+                                            // }
                                         }
                                     } else if (typeID == InputComponent::getStaticTypeID()) {
                                         InputComponent input;
@@ -220,73 +220,81 @@ int main(int argc, char* argv[]) {
                                             view.yaw = input.mouseYaw;
                                             view.inputFlags = input.flags;
                                             deserialized = true;
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[DEBUG] InputComponent deserialized: yaw=" << view.yaw 
-                                                          << ", flags=" << view.inputFlags << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[DEBUG] InputComponent deserialized: yaw=" << view.yaw 
+                                            //               << ", flags=" << view.inputFlags << std::endl;
+                                            // }
                                         } else {
-                                            if (debugComponentTypeCount <= 20) {
-                                                std::cout << "[ERROR] InputComponent deserialization failed! Expected size=" << componentSize 
-                                                          << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
-                                            }
+                                            // if (debugComponentTypeCount <= 20) {
+                                            //     std::cout << "[ERROR] InputComponent deserialization failed! Expected size=" << componentSize 
+                                            //               << ", actual read=" << (reader.getOffset() - componentDataStart) << std::endl;
+                                            // }
                                         }
                                     } else if (typeID == ComponentType::Transform) {
                                         // Transform component - skip it (we use Position instead)
                                         // Skip the component data by moving reader forward
                                         reader.setPosition(componentDataStart + componentSize);
                                         deserialized = true; // Mark as handled
-                                        if (debugComponentTypeCount <= 20) {
-                                            std::cout << "[DEBUG] Skipping Transform component (size=" << componentSize << " bytes)" << std::endl;
-                                        }
+                                        // if (debugComponentTypeCount <= 20) {
+                                        //     std::cout << "[DEBUG] Skipping Transform component (size=" << componentSize << " bytes)" << std::endl;
+                                        // }
                                     } else if (typeID == ComponentType::Health) {
                                         // Health component - skip it (not needed for viewer)
                                         // Skip the component data by moving reader forward
                                         reader.setPosition(componentDataStart + componentSize);
                                         deserialized = true; // Mark as handled
-                                        if (debugComponentTypeCount <= 20) {
-                                            std::cout << "[DEBUG] Skipping Health component (size=" << componentSize << " bytes)" << std::endl;
-                                        }
+                                        // if (debugComponentTypeCount <= 20) {
+                                        //     std::cout << "[DEBUG] Skipping Health component (size=" << componentSize << " bytes)" << std::endl;
+                                        // }
                                     } else if (typeID == ComponentType::Velocity) {
                                         // Velocity component - skip it (not needed for viewer)
                                         // Skip the component data by moving reader forward
                                         reader.setPosition(componentDataStart + componentSize);
                                         deserialized = true; // Mark as handled
-                                        if (debugComponentTypeCount <= 20) {
-                                            std::cout << "[DEBUG] Skipping Velocity component (size=" << componentSize << " bytes)" << std::endl;
-                                        }
+                                        // if (debugComponentTypeCount <= 20) {
+                                        //     std::cout << "[DEBUG] Skipping Velocity component (size=" << componentSize << " bytes)" << std::endl;
+                                        // }
+                                    } else if (typeID == ComponentType::CollisionComponent) {
+                                        // CollisionComponent - skip it (not needed for viewer)
+                                        // Skip the component data by moving reader forward
+                                        reader.setPosition(componentDataStart + componentSize);
+                                        deserialized = true; // Mark as handled
+                                        // if (debugComponentTypeCount <= 20) {
+                                        //     std::cout << "[DEBUG] Skipping CollisionComponent (size=" << componentSize << " bytes)" << std::endl;
+                                        // }
                                     }
                                     
                                     // Always ensure reader is at the correct position after deserialization
                                     // This handles both successful and failed deserialization
                                     size_t currentPos = reader.getOffset();
                                     if (currentPos != expectedEndPos) {
-                                        if (debugComponentTypeCount <= 20) {
-                                            std::cout << "[DEBUG] Reader position mismatch! Expected=" << expectedEndPos 
-                                                      << ", actual=" << currentPos << ", adjusting..." << std::endl;
-                                        }
+                                        // if (debugComponentTypeCount <= 20) {
+                                        //     std::cout << "[DEBUG] Reader position mismatch! Expected=" << expectedEndPos 
+                                        //               << ", actual=" << currentPos << ", adjusting..." << std::endl;
+                                        // }
                                         reader.setPosition(expectedEndPos);
                                     }
                                     
                                     // If component was not deserialized (unknown type), log it
                                     if (!deserialized) {
                                         // Debug: Log unknown component (only first few times)
-                                        static int debugUnknownComponentCount = 0;
-                                        if (debugUnknownComponentCount < 10) {
-                                            std::cout << "[DEBUG] Skipped component type " << typeID 
-                                                      << " (size=" << componentSize << " bytes)" << std::endl;
-                                            debugUnknownComponentCount++;
-                                        }
+                                        // static int debugUnknownComponentCount = 0;
+                                        // if (debugUnknownComponentCount < 10) {
+                                        //     std::cout << "[DEBUG] Skipped component type " << typeID 
+                                        //               << " (size=" << componentSize << " bytes)" << std::endl;
+                                        //     debugUnknownComponentCount++;
+                                        // }
                                     }
                                 }
                                 
                                 // Debug: Log view state after deserializing all components
-                                static int debugViewStateCount = 0;
-                                if (debugViewStateCount < 5) {
-                                    std::cout << "[DEBUG] Entity " << (int)i << " view: id=" << view.id 
-                                              << " (INVALID=" << INVALID_PLAYER << "), pos=(" 
-                                              << view.x << ", " << view.y << ", " << view.z << ")" << std::endl;
-                                    debugViewStateCount++;
-                                }
+                                // static int debugViewStateCount = 0;
+                                // if (debugViewStateCount < 5) {
+                                //     std::cout << "[DEBUG] Entity " << (int)i << " view: id=" << view.id 
+                                //               << " (INVALID=" << INVALID_PLAYER << "), pos=(" 
+                                //               << view.x << ", " << view.y << ", " << view.z << ")" << std::endl;
+                                //     debugViewStateCount++;
+                                // }
                                 
                                 // Only add if we have valid player ID
                                 if (view.id != INVALID_PLAYER) {
@@ -298,26 +306,27 @@ int main(int argc, char* argv[]) {
                         }
                     } else if (recvHeader.type == PacketType::CONNECT) {
                         // Server acknowledged connection
-                        std::cout << "[DEBUG] Server acknowledged connection, Player ID: " << recvHeader.playerID << std::endl;
+                        // std::cout << "[DEBUG] Server acknowledged connection, Player ID: " << recvHeader.playerID << std::endl;
                     } else {
                         // Debug: Log other packet types
-                        static int debugOtherPacketCount = 0;
-                        if (debugOtherPacketCount < 3) {
-                            std::cout << "[DEBUG] Received packet type: " << (int)recvHeader.type << std::endl;
-                            debugOtherPacketCount++;
-                        }
+                        // static int debugOtherPacketCount = 0;
+                        // if (debugOtherPacketCount < 3) {
+                        //     std::cout << "[DEBUG] Received packet type: " << (int)recvHeader.type << std::endl;
+                        //     debugOtherPacketCount++;
+                        // }
                     }
                 }
             }
         }
         
         // Render map every second (or immediately on first run)
-        if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastRender).count() >= 1000) {
-            // Don't clear screen - keep debug logs visible
-            // #ifdef _WIN32
-            // system("cls");
-            // #endif
-            std::cout << "\n\n"; // Just add some spacing
+        if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastRender).count() >= 100) {
+            // Clear screen to update map in place
+            #ifdef _WIN32
+            system("cls");
+            #else
+            system("clear");
+            #endif
             
             std::cout << "========================================" << std::endl;
             std::cout << "=== MINI GAME - ASCII MAP VIEWER ===" << std::endl;
@@ -328,7 +337,7 @@ int main(int argc, char* argv[]) {
             if (players.empty()) {
                 if (snapshotCount == 0) {
                     std::cout << "[INFO] Waiting for snapshot from server..." << std::endl;
-                    std::cout << "[DEBUG] Make sure TestClient.exe is running to see players" << std::endl;
+                    // std::cout << "[DEBUG] Make sure TestClient.exe is running to see players" << std::endl;
                 } else {
                     std::cout << "[INFO] No players in game yet..." << std::endl;
                 }
@@ -402,7 +411,7 @@ int main(int argc, char* argv[]) {
             lastRender = now;
         }
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
     
     socket.close();

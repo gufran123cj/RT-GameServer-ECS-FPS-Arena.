@@ -1,7 +1,10 @@
 #include "Server.hpp"
 #include "../net/Packet.hpp"
 #include "../components/Components.hpp"
+#include "../components/CollisionComponent.hpp"
 #include "../systems/MovementSystem.hpp"
+#include "../systems/PhysicsSystem.hpp"
+#include "../physics/Physics.hpp"
 #include <iostream>
 #include <thread>
 #include <algorithm>
@@ -489,7 +492,11 @@ RoomID GameServer::createRoom(int tickRate) {
     auto movementSystem = std::make_unique<systems::MovementSystem>();
     rooms[id]->world.addSystem(std::move(movementSystem));
     
-    std::cout << "Room " << id << " created (Tick Rate: " << tickRate << ") - Movement System added" << std::endl;
+    // Add Physics System to room's world (Phase 5)
+    auto physicsSystem = std::make_unique<systems::PhysicsSystem>();
+    rooms[id]->world.addSystem(std::move(physicsSystem));
+    
+    std::cout << "Room " << id << " created (Tick Rate: " << tickRate << ") - Movement & Physics Systems added" << std::endl;
     std::cout << "Mini Game ASCII Map will render every 1 second..." << std::endl;
     return id;
 }
@@ -516,6 +523,16 @@ EntityID GameServer::createPlayerEntity(Room* room, PlayerID playerID) {
     // Add InputComponent for player input handling
     auto input = std::make_unique<components::InputComponent>();
     room->world.addComponent<components::InputComponent>(entityID, std::move(input));
+    
+    // Add CollisionComponent for physics (Phase 5)
+    auto collision = components::CollisionComponent::fromCenterSize(
+        physics::Vec3(0.0f, 0.0f, 0.0f),
+        physics::Vec3(1.0f, 2.0f, 1.0f), // Player size: 1x2x1 (width x height x depth)
+        false, // Not static
+        false  // Not a trigger
+    );
+    room->world.addComponent<components::CollisionComponent>(entityID, 
+        std::make_unique<components::CollisionComponent>(collision));
     
     // Verify components were added correctly (PHASE 1 TEST)
     auto* pos = room->world.getComponent<components::Position>(entityID);

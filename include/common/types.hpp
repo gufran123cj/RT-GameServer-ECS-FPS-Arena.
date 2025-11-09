@@ -12,6 +12,7 @@ namespace game::components {
     class PlayerComponent;
     class Transform;
     class InputComponent;
+    class CollisionComponent;
 }
 
 namespace game {
@@ -33,6 +34,7 @@ namespace ComponentType {
     constexpr ComponentTypeID PlayerComponent = 3;
     constexpr ComponentTypeID Transform = 4;
     constexpr ComponentTypeID InputComponent = 5;
+    constexpr ComponentTypeID CollisionComponent = 6;
 }
 
 // Network types

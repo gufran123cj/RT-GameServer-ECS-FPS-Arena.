@@ -18,6 +18,7 @@ namespace game::components {
     class PlayerComponent;
     class Transform;
     class InputComponent;
+    class CollisionComponent;
 }
 
 namespace game::ecs {
@@ -60,6 +61,8 @@ public:
             return ComponentType::Transform;
         } else if constexpr (std::is_same_v<T, components::InputComponent>) {
             return ComponentType::InputComponent;
+        } else if constexpr (std::is_same_v<T, components::CollisionComponent>) {
+            return ComponentType::CollisionComponent;
         }
         
         // Fallback to dynamic assignment for unknown components
