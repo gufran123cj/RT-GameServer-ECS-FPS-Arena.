@@ -75,18 +75,23 @@ public:
             // Client'ta yaw 90° başlıyor (yukarı bakıyor)
             // Yaw 90° = forward (0, 1) olmalı
             // Yaw 0° = sağa (1, 0) olmalı
-            float adjustedYaw = input.mouseYaw + 90.0f; // 90° offset
+            // Yaw 180° = aşağı (0, -1) olmalı
+            // Yaw 270° = sola (-1, 0) olmalı
+            float adjustedYaw = input.mouseYaw - 90.0f; // 90° offset (yaw 90° = 0° rotation)
             float yawRad = adjustedYaw * DEG2RAD;
             float c = std::cos(yawRad);
             float s = std::sin(yawRad);
 
             // Basit 2D rotation: (forward, right) -> (worldX, worldY)
             // forward = (0, 1) yerel, right = (1, 0) yerel
-            float worldX = moveRight * c - moveForward * s;  // Sağ-sol
-            float worldY = moveRight * s + moveForward * c;  // İleri-geri
+            // Mouse yaw CW artıyorsa, rotation ters olmalı (CW rotation):
+            // [cos  sin] [right ]   [worldX]
+            // [-sin cos] [forward] = [worldY]
+            float worldX = moveRight * c + moveForward * s;  // Sağ-sol
+            float worldY = -moveRight * s + moveForward * c;  // İleri-geri
 
             // DEBUG: Rotation sonrası
-            std::cout << "[ROTATION] adjustedYaw: " << adjustedYaw << "° | "
+            std::cout << "[ROTATION] yaw: " << input.mouseYaw << "° | adjustedYaw: " << adjustedYaw << "° | "
                       << "cos: " << c << " | sin: " << s << " | "
                       << "worldX: " << worldX << " | worldY: " << worldY << std::endl;
 

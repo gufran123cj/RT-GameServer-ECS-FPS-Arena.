@@ -16,7 +16,7 @@
 
 // Raylib header (header-only mode)
 #define RAYLIB_STANDALONE
-#include "raylib.h"
+#include "../raylib/include/raylib.h"
 
 using namespace game;
 using namespace game::net;
