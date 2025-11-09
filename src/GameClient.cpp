@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
     
     // Input state
     uint16_t inputFlags = 0;
-    float mouseYaw = 90.0f; // Start looking up (North, +Z direction) in top-down 2D
+    float mouseYaw = 0.0f; // Start looking up (North, +Y direction) in top-down 2D
     float mousePitch = 0.0f;
     uint32_t inputSequence = 1;
     auto lastInputSend = std::chrono::steady_clock::now();
@@ -253,7 +253,8 @@ int main(int argc, char* argv[]) {
         }
         
         if (ownPlayer) {
-            camera.target = (Vector2){ownPlayer->x, ownPlayer->y};
+            // Raylib'de Y ekseni aşağı pozitif, bizim sistemde yukarı pozitif
+            camera.target = (Vector2){ownPlayer->x, -ownPlayer->y};
         } else if (!players.empty()) {
             float avgX = 0, avgY = 0;
             for (const auto& player : players) {
@@ -262,7 +263,8 @@ int main(int argc, char* argv[]) {
             }
             avgX /= players.size();
             avgY /= players.size();
-            camera.target = (Vector2){avgX, avgY};
+            // Raylib'de Y ekseni aşağı pozitif, bizim sistemde yukarı pozitif
+            camera.target = (Vector2){avgX, -avgY};
         }
         
         // Camera zoom controls (mouse wheel + keyboard)
@@ -302,19 +304,22 @@ int main(int argc, char* argv[]) {
         // Draw players
         for (const auto& player : players) {
             // Convert 3D position to 2D (top-down: X->X, Y->Y)
-            Vector2 pos2D = {player.x, player.y};
+            // Raylib'de Y ekseni aşağı pozitif, bizim sistemde yukarı pozitif
+            // Bu yüzden Y'yi ters çeviriyoruz
+            Vector2 pos2D = {player.x, -player.y};
             
             // Draw player circle
             DrawCircleV(pos2D, 0.5f, player.color);
             DrawCircleLinesV(pos2D, 0.5f, WHITE);
             
-            // Draw direction indicator (based on yaw)
-            // In top-down 2D: 0° = North (up), 90° = East (right)
-            // Adjust yaw to match coordinate system (same as MovementSystem)
-            float adjustedYaw = player.yaw - 90.0f;
-            float yawRad = adjustedYaw * (PI / 180.0f);
-            Vector2 dir = {cosf(yawRad) * 0.8f, sinf(yawRad) * 0.8f};
-            DrawLineV(pos2D, {pos2D.x + dir.x, pos2D.y + dir.y}, WHITE);
+            // Draw direction indicator (based on yaw) - 2D oyunda yaw'a gerek yok ama gösteriyoruz
+            // Y ekseni ters olduğu için direction'ı da ters çeviriyoruz
+            if (player.yaw != 0.0f) {
+                float adjustedYaw = player.yaw - 90.0f;
+                float yawRad = adjustedYaw * (PI / 180.0f);
+                Vector2 dir = {cosf(yawRad) * 0.8f, -sinf(yawRad) * 0.8f}; // Y'yi ters çevir
+                DrawLineV(pos2D, {pos2D.x + dir.x, pos2D.y + dir.y}, WHITE);
+            }
             
             // Draw player ID
             char idText[16];
@@ -324,7 +329,7 @@ int main(int argc, char* argv[]) {
         
         EndMode2D();
         
-        // Draw UI overlay
+        // Draw UI overlay - Sol üst köşe
         DrawRectangle(10, 10, 320, 180, (Color){0, 0, 0, 180});
         DrawText(TextFormat("Server: %s:%d", serverIP.c_str(), serverPort), 20, 20, 16, WHITE);
         DrawText(TextFormat("Tick: %llu", lastServerTick), 20, 40, 16, WHITE);
@@ -334,6 +339,22 @@ int main(int argc, char* argv[]) {
         DrawText("Controls:", 20, 120, 14, GRAY);
         DrawText("WASD = Move | Mouse = Look | Wheel = Zoom", 20, 140, 12, LIGHTGRAY);
         DrawText("+/- = Zoom | Space = Jump | Shift = Sprint", 20, 160, 12, LIGHTGRAY);
+        
+        // Draw UI overlay - Sağ üst köşe (Koordinatlar)
+        if (ownPlayer) {
+            int coordBoxWidth = 200;
+            int coordBoxHeight = 80;
+            int coordBoxX = screenWidth - coordBoxWidth - 10;
+            int coordBoxY = 10;
+            
+            DrawRectangle(coordBoxX, coordBoxY, coordBoxWidth, coordBoxHeight, (Color){0, 0, 0, 180});
+            DrawText("Position:", coordBoxX + 10, coordBoxY + 10, 14, GRAY);
+            DrawText(TextFormat("X: %.2f", ownPlayer->x), coordBoxX + 10, coordBoxY + 30, 16, WHITE);
+            DrawText(TextFormat("Y: %.2f", ownPlayer->y), coordBoxX + 10, coordBoxY + 50, 16, WHITE);
+            
+            // Yaw açısını da göster
+            DrawText(TextFormat("Yaw: %.1f°", ownPlayer->yaw), coordBoxX + 120, coordBoxY + 30, 14, LIGHTGRAY);
+        }
         
         EndDrawing();
     }
