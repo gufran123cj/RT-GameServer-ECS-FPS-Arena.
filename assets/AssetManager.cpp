@@ -121,7 +121,28 @@ bool AssetManager::loadLDtkWorld(const std::string& jsonPath) {
     
     // Auto-load tileset textures
     for (const auto& [uid, tileset] : ldtkWorld->tilesets) {
-        loadTilesetTexture(uid, tileset.relPath);
+        // Fix tileset path: LDtk sometimes uses absolute paths, extract filename
+        std::string tilesetPath = tileset.relPath;
+        
+        // If path contains "atlas/", extract the filename and use our atlas folder
+        size_t atlasPos = tilesetPath.find("atlas/");
+        if (atlasPos != std::string::npos) {
+            // Extract filename after "atlas/"
+            std::string filename = tilesetPath.substr(atlasPos + 6); // "atlas/" is 6 chars
+            tilesetPath = "atlas/" + filename;
+        } else {
+            // If it's just a filename, assume it's in atlas folder
+            size_t lastSlash = tilesetPath.find_last_of("/\\");
+            if (lastSlash != std::string::npos) {
+                tilesetPath = "atlas/" + tilesetPath.substr(lastSlash + 1);
+            } else {
+                tilesetPath = "atlas/" + tilesetPath;
+            }
+        }
+        
+        std::cout << "[AssetManager] Loading tileset UID " << uid 
+                  << " from: " << tilesetPath << " (original: " << tileset.relPath << ")" << std::endl;
+        loadTilesetTexture(uid, tilesetPath);
     }
     
     return true;

@@ -4,10 +4,12 @@
 #include "../components/Position.hpp"
 #include "../components/Velocity.hpp"
 #include "../components/CollisionComponent.hpp"
+#include "../components/PlayerComponent.hpp"
 #include "../physics/Physics.hpp"
 #include "../include/common/types.hpp"
 #include <vector>
 #include <unordered_map>
+#include <iostream>
 
 namespace game::systems {
 
@@ -72,7 +74,11 @@ public:
             auto* coll = world.getComponent<components::CollisionComponent>(entityID);
             
             if (pos && vel && coll && !coll->isStatic) {
-                resolveCollisions(world, entityID, *pos, *vel, *coll);
+                // Only check collisions if entity is actually moving
+                float speed = vel->value.length();
+                if (speed > 0.001f) {  // Small threshold to avoid floating point noise
+                    resolveCollisions(world, entityID, *pos, *vel, *coll);
+                }
             }
         }
     }
@@ -105,6 +111,23 @@ public:
         // Rebuild BVH
         if (!entityBounds.empty()) {
             bvh.build(entityBounds);
+            
+            // Debug: Log BVH stats (only once)
+            static bool bvhDebugLogged = false;
+            if (!bvhDebugLogged) {
+                int staticCount = 0;
+                int dynamicCount = 0;
+                for (EntityID eid : entityIDs) {
+                    auto* coll = world.getComponent<components::CollisionComponent>(eid);
+                    if (coll) {
+                        if (coll->isStatic) staticCount++;
+                        else dynamicCount++;
+                    }
+                }
+                std::cout << "[Physics] BVH built: " << entityBounds.size() 
+                          << " entities (" << staticCount << " static, " << dynamicCount << " dynamic)" << std::endl;
+                bvhDebugLogged = true;
+            }
         }
     }
     
@@ -158,19 +181,51 @@ public:
             if (newBounds.intersects(otherColl->bounds)) {
                 hasCollision = true;
                 
+                // Debug: Log collision detection (only for player entities, limit spam)
+                static int collisionLogCount = 0;
+                auto* playerComp = world.getComponent<components::PlayerComponent>(entityID);
+                if (playerComp && collisionLogCount < 10) {
+                    std::cout << "[Physics] Collision detected! Entity " << entityID 
+                              << " (Player " << playerComp->playerID << ") collided with entity " 
+                              << otherEntityID << " at pos=(" << newPosition.x << ", " << newPosition.y << ")" << std::endl;
+                    collisionLogCount++;
+                }
+                
                 // Simple collision response: push away from collision
-                physics::Vec3 direction = newPosition - otherColl->bounds.center();
+                physics::Vec3 otherCenter = otherColl->bounds.center();
+                physics::Vec3 direction = newPosition - otherCenter;
                 float distance = direction.length();
                 
-                if (distance > 0.0f) {
+                if (distance > 0.001f) {
                     direction = direction.normalized();
-                    float overlap = (size.length() + otherColl->bounds.size().length()) * 0.5f - distance;
-                    if (overlap > 0.0f) {
-                        correction = correction + (direction * (overlap + COLLISION_EPSILON));
+                    
+                    // Calculate overlap using AABB intersection
+                    physics::Vec3 otherSize = otherColl->bounds.size();
+                    physics::AABB otherBounds = otherColl->bounds;
+                    
+                    // Calculate minimum translation vector (MTV) for AABB
+                    float overlapX = std::min(newBounds.max.x - otherBounds.min.x, otherBounds.max.x - newBounds.min.x);
+                    float overlapY = std::min(newBounds.max.y - otherBounds.min.y, otherBounds.max.y - newBounds.min.y);
+                    
+                    // Use the smallest overlap axis
+                    if (overlapX < overlapY) {
+                        // Push in X direction
+                        if (newPosition.x < otherCenter.x) {
+                            correction = correction + physics::Vec3(-overlapX - COLLISION_EPSILON, 0.0f, 0.0f);
+                        } else {
+                            correction = correction + physics::Vec3(overlapX + COLLISION_EPSILON, 0.0f, 0.0f);
+                        }
+                    } else {
+                        // Push in Y direction
+                        if (newPosition.y < otherCenter.y) {
+                            correction = correction + physics::Vec3(0.0f, -overlapY - COLLISION_EPSILON, 0.0f);
+                        } else {
+                            correction = correction + physics::Vec3(0.0f, overlapY + COLLISION_EPSILON, 0.0f);
+                        }
                     }
                 } else {
-                    // Entities are exactly on top of each other - push in a random direction
-                    correction = correction + physics::Vec3(0.1f, 0.0f, 0.0f);
+                    // Entities are exactly on top of each other - push away based on direction
+                    correction = correction + (direction * (size.length() * 0.5f + otherColl->bounds.size().length() * 0.5f + COLLISION_EPSILON));
                 }
             }
         }
@@ -179,11 +234,22 @@ public:
         if (hasCollision) {
             newPosition = newPosition + correction;
             
-            // Update position and stop velocity in collision direction
+            // Update position
             position.value = newPosition;
             
-            // Dampen velocity (simple friction)
-            velocity.value = velocity.value * 0.5f;
+            // Stop velocity in collision direction (project velocity onto correction direction)
+            if (correction.length() > 0.001f) {
+                physics::Vec3 correctionDir = correction.normalized();
+                // Manual dot product: v · d = v.x*d.x + v.y*d.y + v.z*d.z
+                float dotProduct = velocity.value.x * correctionDir.x + 
+                                  velocity.value.y * correctionDir.y + 
+                                  velocity.value.z * correctionDir.z;
+                physics::Vec3 velocityInCollisionDir = correctionDir * dotProduct;
+                velocity.value = velocity.value - velocityInCollisionDir;
+            }
+            
+            // Small damping to prevent jitter
+            velocity.value = velocity.value * 0.8f;
             
             return true;
         }

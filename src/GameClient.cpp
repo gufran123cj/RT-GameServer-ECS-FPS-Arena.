@@ -10,6 +10,8 @@
 #include "../components/CollisionComponent.hpp"
 #include "../physics/Physics.hpp"
 #include "../ecs/Component.hpp"
+#include "../assets/AssetManager.hpp"
+#include "../ldtk/LDtkParser.hpp"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -60,6 +62,48 @@ int main(int argc, char* argv[]) {
     
     InitWindow(screenWidth, screenHeight, "Top-Down 2D Game Client");
     SetTargetFPS(60);
+    
+    // Initialize Asset Manager and load LDtk map
+    assets::AssetManager assetManager("sprites");
+    ldtk::World* ldtkWorld = nullptr;
+    ldtk::Level* currentLevel = nullptr;
+    
+    if (assetManager.loadLDtkWorld("map.json")) {
+        ldtkWorld = assetManager.getLDtkWorld();
+        if (ldtkWorld && !ldtkWorld->levels.empty()) {
+            // Load first level
+            currentLevel = &ldtkWorld->levels[0];
+            std::cout << "[GameClient] Loaded LDtk level: " << currentLevel->identifier 
+                      << " (" << currentLevel->pxWid << "x" << currentLevel->pxHei << ")" << std::endl;
+            std::cout << "[GameClient] Level has " << currentLevel->layers.size() << " layers" << std::endl;
+            
+            // Debug: Print layer info
+            for (const auto& layer : currentLevel->layers) {
+                std::cout << "[GameClient] Layer: " << layer.identifier 
+                          << " type: " << layer.type 
+                          << " visible: " << layer.visible
+                          << " tilesetUID: " << layer.tilesetDefUid
+                          << " gridTiles: " << layer.gridTiles.size()
+                          << " autoTiles: " << layer.autoLayerTiles.size() << std::endl;
+            }
+            
+            // Debug: Print tileset info
+            std::cout << "[GameClient] Tilesets loaded: " << ldtkWorld->tilesets.size() << std::endl;
+            for (const auto& [uid, tileset] : ldtkWorld->tilesets) {
+                std::cout << "[GameClient] Tileset UID: " << uid 
+                          << " path: " << tileset.relPath 
+                          << " size: " << tileset.pxWid << "x" << tileset.pxHei << std::endl;
+                Texture2D* tex = assetManager.getTilesetTexture(uid);
+                if (tex && tex->id != 0) {
+                    std::cout << "[GameClient] Tileset texture loaded: " << tex->width << "x" << tex->height << std::endl;
+                } else {
+                    std::cerr << "[GameClient] WARNING: Tileset texture NOT loaded for UID " << uid << std::endl;
+                }
+            }
+        }
+    } else {
+        std::cerr << "[GameClient] Failed to load LDtk map!" << std::endl;
+    }
     
     // UDP socket
     UDPSocket socket;
@@ -318,22 +362,103 @@ int main(int argc, char* argv[]) {
         BeginDrawing();
         ClearBackground((Color){20, 20, 30, 255}); // Dark blue-gray background
         
-        // Draw grid
+        // Draw LDtk map
         BeginMode2D(camera);
         
-        // Draw world grid (150x150 map)
-        const float gridSize = 10.0f;
-        const int gridLines = 75;  // 150/2 = 75
-        Color gridColor = (Color){40, 40, 50, 255};
-        
-        for (int i = -gridLines; i <= gridLines; i++) {
-            DrawLine(i * gridSize, -gridLines * gridSize, i * gridSize, gridLines * gridSize, gridColor);
-            DrawLine(-gridLines * gridSize, i * gridSize, gridLines * gridSize, i * gridSize, gridColor);
+        // Render LDtk tile layers
+        if (currentLevel) {
+            static bool debugPrinted = false;
+            if (!debugPrinted) {
+                std::cout << "[GameClient] Rendering " << currentLevel->layers.size() << " layers" << std::endl;
+                debugPrinted = true;
+            }
+            
+            for (const auto& layer : currentLevel->layers) {
+                if (!layer.visible) continue;
+                
+                // Get tileset texture
+                Texture2D* tilesetTex = assetManager.getTilesetTexture(layer.tilesetDefUid);
+                if (!tilesetTex || tilesetTex->id == 0) {
+                    static bool textureWarningPrinted = false;
+                    if (!textureWarningPrinted) {
+                        std::cerr << "[GameClient] WARNING: Tileset texture not found for layer " 
+                                  << layer.identifier << " (UID: " << layer.tilesetDefUid << ")" << std::endl;
+                        textureWarningPrinted = true;
+                    }
+                    continue;
+                }
+                
+                // Get tileset definition for tile size
+                int tileSize = layer.gridSize;
+                if (ldtkWorld && ldtkWorld->tilesets.find(layer.tilesetDefUid) != ldtkWorld->tilesets.end()) {
+                    tileSize = ldtkWorld->tilesets.at(layer.tilesetDefUid).tileGridSize;
+                }
+                
+                // Render grid tiles
+                for (const auto& tile : layer.gridTiles) {
+                    // Convert pixel position to world coordinates
+                    // LDtk uses pixel coordinates, we need to convert to world units
+                    float worldX = (tile.px[0] - currentLevel->pxWid / 2.0f) / 16.0f;
+                    float worldY = -(tile.px[1] - currentLevel->pxHei / 2.0f) / 16.0f; // Invert Y
+                    
+                    // Source rectangle in tileset
+                    Rectangle srcRect = {
+                        static_cast<float>(tile.src[0]),
+                        static_cast<float>(tile.src[1]),
+                        static_cast<float>(tileSize),
+                        static_cast<float>(tileSize)
+                    };
+                    
+                    // Destination rectangle in world
+                    Rectangle dstRect = {
+                        worldX - (tileSize / 32.0f), // Center the tile
+                        worldY - (tileSize / 32.0f),
+                        static_cast<float>(tileSize) / 16.0f, // Convert to world units
+                        static_cast<float>(tileSize) / 16.0f
+                    };
+                    
+                    // Handle flip flags
+                    int flipX = (tile.f & 1) ? -1 : 1;
+                    int flipY = (tile.f & 2) ? -1 : 1;
+                    
+                    // Draw tile with alpha
+                    Color tint = WHITE;
+                    tint.a = static_cast<unsigned char>(layer.opacity * 255);
+                    
+                    DrawTexturePro(*tilesetTex, srcRect, dstRect, 
+                                  (Vector2){dstRect.width * 0.5f, dstRect.height * 0.5f}, 
+                                  0.0f, tint);
+                }
+                
+                // Render auto layer tiles
+                for (const auto& tile : layer.autoLayerTiles) {
+                    float worldX = (tile.px[0] - currentLevel->pxWid / 2.0f) / 16.0f;
+                    float worldY = -(tile.px[1] - currentLevel->pxHei / 2.0f) / 16.0f;
+                    
+                    Rectangle srcRect = {
+                        static_cast<float>(tile.src[0]),
+                        static_cast<float>(tile.src[1]),
+                        static_cast<float>(tileSize),
+                        static_cast<float>(tileSize)
+                    };
+                    
+                    float tileWorldSize = static_cast<float>(tileSize) / 16.0f;
+                    Rectangle dstRect = {
+                        worldX - tileWorldSize * 0.5f,
+                        worldY - tileWorldSize * 0.5f,
+                        tileWorldSize,
+                        tileWorldSize
+                    };
+                    
+                    Color tint = WHITE;
+                    tint.a = static_cast<unsigned char>(layer.opacity * tile.a * 255);
+                    
+                    DrawTexturePro(*tilesetTex, srcRect, dstRect,
+                                  (Vector2){0, 0},
+                                  0.0f, tint);
+                }
+            }
         }
-        
-        // Draw world boundaries (150x150 map)
-        const float worldSize = 75.0f;
-        DrawRectangleLines(-worldSize, -worldSize, worldSize * 2, worldSize * 2, (Color){100, 100, 100, 255});
         
         // Draw walls/obstacles
         for (const auto& wall : walls) {

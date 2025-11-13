@@ -37,6 +37,8 @@ REM MinGW header uyumluluk flag'leri
     -Ianti-cheat-lite ^
     -Icomponents ^
     -Isystems ^
+    -Ildtk ^
+    -Iinclude/json ^
     src\main.cpp ^
     src\Server.cpp ^
     ecs\Component.cpp ^
@@ -46,6 +48,7 @@ REM MinGW header uyumluluk flag'leri
     physics\Physics.cpp ^
     matchmaker\Matchmaker.cpp ^
     anti-cheat-lite\AntiCheat.cpp ^
+    ldtk\LDtkParser.cpp ^
     -o GameServer.exe ^
     -lws2_32
 

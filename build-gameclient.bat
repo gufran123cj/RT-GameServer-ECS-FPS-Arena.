@@ -60,8 +60,13 @@ REM Eğer header-only kullanıyorsanız, RAYLIB_STANDALONE define edin
     -Ianti-cheat-lite ^
     -Icomponents ^
     -Iraylib\include ^
+    -Ildtk ^
+    -Iassets ^
+    -Iinclude\json ^
     src\GameClient.cpp ^
     net\Socket.cpp ^
+    ldtk\LDtkParser.cpp ^
+    assets\AssetManager.cpp ^
     -o GameClient.exe ^
     -Lraylib\lib ^
     -lws2_32 ^
