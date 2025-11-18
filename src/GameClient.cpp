@@ -12,6 +12,7 @@
 #include "../ecs/Component.hpp"
 #include "../assets/AssetManager.hpp"
 #include "../ldtk/LDtkParser.hpp"
+#include "../ldtk/LevelRenderer.hpp"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -70,11 +71,25 @@ int main(int argc, char* argv[]) {
     float mapWorldWidth = 32.0f;
     float mapWorldHeight = 16.0f;
     
+    // Initialize Level Renderer
+    ldtk::LevelRenderer levelRenderer;
+    bool levelRendererInitialized = false;
+    
     if (assetManager.loadLDtkWorld("map.json")) {
         ldtkWorld = assetManager.getLDtkWorld();
         if (ldtkWorld && !ldtkWorld->levels.empty()) {
             // Load first level
             currentLevel = &ldtkWorld->levels[0];
+            
+            // Initialize level renderer
+            if (levelRenderer.initialize(ldtkWorld, &assetManager, currentLevel->identifier)) {
+                // Parse collision tiles from JSON (enumTags support)
+                levelRenderer.parseCollisionTilesFromJSON("sprites/map.json");
+                levelRendererInitialized = true;
+                
+                std::cout << "[GameClient] LevelRenderer initialized successfully" << std::endl;
+            }
+            
             // Calculate actual map size in world units
             // LDtk uses pixels, we convert to world units (16 pixels = 1 world unit)
             // For rendering, we treat the map as if it's 1920x1080 pixels to fill screen
@@ -384,11 +399,15 @@ int main(int argc, char* argv[]) {
         // Draw LDtk map
         BeginMode2D(camera);
         
-        // Render LDtk tile layers
-        if (currentLevel) {
+        // Use LevelRenderer if initialized, otherwise fallback to old rendering
+        if (levelRendererInitialized) {
+            float deltaTime = GetFrameTime();
+            levelRenderer.renderLevel(camera, deltaTime);
+        } else if (currentLevel) {
+            // Fallback to old rendering method
             static bool debugPrinted = false;
             if (!debugPrinted) {
-                std::cout << "[GameClient] Rendering " << currentLevel->layers.size() << " layers" << std::endl;
+                std::cout << "[GameClient] Using fallback rendering (LevelRenderer not initialized)" << std::endl;
                 debugPrinted = true;
             }
             
@@ -403,12 +422,6 @@ int main(int argc, char* argv[]) {
                 // Get tileset texture
                 Texture2D* tilesetTex = assetManager.getTilesetTexture(layer.tilesetDefUid);
                 if (!tilesetTex || tilesetTex->id == 0) {
-                    static bool textureWarningPrinted = false;
-                    if (!textureWarningPrinted) {
-                        std::cerr << "[GameClient] WARNING: Tileset texture not found for layer " 
-                                  << layer.identifier << " (UID: " << layer.tilesetDefUid << ")" << std::endl;
-                        textureWarningPrinted = true;
-                    }
                     continue;
                 }
                 
@@ -420,18 +433,14 @@ int main(int argc, char* argv[]) {
                 
                 // Render grid tiles
                 for (const auto& tile : layer.gridTiles) {
-                    // Convert pixel position to world coordinates
-                    // LDtk uses pixel coordinates, we need to convert to world units
-                    // Scale map to fill screen (1920x1080)
                     float scaledPxWid = currentLevel->pxWid * mapScale;
                     float scaledPxHei = currentLevel->pxHei * mapScale;
                     float scaledTilePxX = tile.px[0] * mapScale;
                     float scaledTilePxY = tile.px[1] * mapScale;
                     
                     float worldX = (scaledTilePxX - scaledPxWid / 2.0f) / 16.0f;
-                    float worldY = -(scaledTilePxY - scaledPxHei / 2.0f) / 16.0f; // Invert Y
+                    float worldY = -(scaledTilePxY - scaledPxHei / 2.0f) / 16.0f;
                     
-                    // Source rectangle in tileset
                     Rectangle srcRect = {
                         static_cast<float>(tile.src[0]),
                         static_cast<float>(tile.src[1]),
@@ -439,20 +448,14 @@ int main(int argc, char* argv[]) {
                         static_cast<float>(tileSize)
                     };
                     
-                    // Destination rectangle in world (scaled)
                     float scaledTileSize = tileSize * mapScale;
                     Rectangle dstRect = {
-                        worldX - (scaledTileSize / 32.0f), // Center the tile
+                        worldX - (scaledTileSize / 32.0f),
                         worldY - (scaledTileSize / 32.0f),
-                        scaledTileSize / 16.0f, // Convert to world units (scaled)
+                        scaledTileSize / 16.0f,
                         scaledTileSize / 16.0f
                     };
                     
-                    // Handle flip flags
-                    int flipX = (tile.f & 1) ? -1 : 1;
-                    int flipY = (tile.f & 2) ? -1 : 1;
-                    
-                    // Draw tile with alpha
                     Color tint = WHITE;
                     tint.a = static_cast<unsigned char>(layer.opacity * 255);
                     
@@ -463,7 +466,6 @@ int main(int argc, char* argv[]) {
                 
                 // Render auto layer tiles
                 for (const auto& tile : layer.autoLayerTiles) {
-                    // Scale map to fill screen (1920x1080) - use pre-calculated mapScale
                     float scaledPxWid = currentLevel->pxWid * mapScale;
                     float scaledPxHei = currentLevel->pxHei * mapScale;
                     float scaledTilePxX = tile.px[0] * mapScale;
