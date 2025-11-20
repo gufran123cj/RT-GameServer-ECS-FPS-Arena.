@@ -1,0 +1,23 @@
+# CMake generation dependency list for this directory.
+D:/CMake/share/cmake-4.2/Modules/BasicConfigVersion-SameMinorVersion.cmake.in
+D:/CMake/share/cmake-4.2/Modules/CMakeCInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeCommonLanguageInclude.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeLanguageInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakePackageConfigHelpers.cmake
+D:/CMake/share/cmake-4.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+D:/CMake/share/cmake-4.2/Modules/Compiler/MSVC-C.cmake
+D:/CMake/share/cmake-4.2/Modules/Compiler/MSVC.cmake
+D:/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+D:/CMake/share/cmake-4.2/Modules/Internal/CMakeCLinkerInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/Internal/CMakeCommonLinkerInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/Linker/MSVC-C.cmake
+D:/CMake/share/cmake-4.2/Modules/Linker/MSVC.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-MSVC-C.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-MSVC.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-C.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake
+D:/CMake/share/cmake-4.2/Modules/WriteBasicConfigVersionFile.cmake
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/CMakeFiles/4.2.0-rc2/CMakeCCompiler.cmake
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/CMakeLists.txt
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/cmake/LDtkLoaderConfig.cmake.in
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/src/Version.hpp.in

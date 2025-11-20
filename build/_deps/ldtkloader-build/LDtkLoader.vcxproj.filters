@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\DataTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\EntityDef.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Enum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\FieldsContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\LayerDef.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Project.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\TagsContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Tileset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\DataTypes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Enum.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Field.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Layer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Level.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Project.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Tile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Tileset.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\World.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\containers\FieldsContainer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\containers\TagsContainer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\EntityDef.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\FieldDef.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\LayerDef.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\json_fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\optional.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3617FB82-52FD-3529-BEE2-EEA7D2C95FA2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0B4EE55C-149F-3336-BF38-9E0E3B0B806A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

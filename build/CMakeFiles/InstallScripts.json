@@ -1,7 +1,8 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/Real-Time Game Server + ECS (FPS-lite  Arena)/build/cmake_install.cmake"
+		"D:/Real-Time Game Server ECS (FPS-lite Arena)/build/cmake_install.cmake",
+		"D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

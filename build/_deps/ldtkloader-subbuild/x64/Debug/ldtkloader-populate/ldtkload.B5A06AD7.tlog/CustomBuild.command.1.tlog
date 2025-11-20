@@ -1,0 +1,150 @@
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-MKDIR.RULE
+setlocal
+D:\CMake\bin\cmake.exe -Dcfgdir=/Debug -P "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-mkdirs.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-mkdir"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-DOWNLOAD.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-gitclone.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-download"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-UPDATE.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-gitupdate.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-PATCH.RULE
+setlocal
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-patch"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-CONFIGURE.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-configure"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-BUILD.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-build"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-INSTALL.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-install"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\5D716A0FB7359F6C605B6B3EB1EB4F72\LDTKLOADER-POPULATE-TEST.RULE
+setlocal
+cd "D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-test"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\55EED481F83FD78543D2B9EB7B67BB91\LDTKLOADER-POPULATE-COMPLETE.RULE
+setlocal
+D:\CMake\bin\cmake.exe -E make_directory "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/Debug/ldtkloader-populate-complete"
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-done"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\C1245C1C915413009493ED9300157E2A\LDTKLOADER-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\55eed481f83fd78543d2b9eb7b67bb91\ldtkloader-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\c1245c1c915413009493ed9300157e2a\ldtkloader-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\ldtkloader-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B87258C1-25C9-364B-8C56-156C4513060F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+# CMake generation dependency list for this directory.
+D:/CMake/share/cmake-4.2/Modules/CMakeGenericSystem.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeInitializeConfigs.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInitialize.cmake
+D:/CMake/share/cmake-4.2/Modules/ExternalProject.cmake
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/PatchInfo.txt.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/RepositoryInfo.txt.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/UpdateInfo.txt.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/cfgcmd.txt.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/gitclone.cmake.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/gitupdate.cmake.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/mkdirs.cmake.in
+D:/CMake/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Windows-Initialize.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/4.2.0-rc2/CMakeSystem.cmake
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeLists.txt
+D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-mkdirs.cmake

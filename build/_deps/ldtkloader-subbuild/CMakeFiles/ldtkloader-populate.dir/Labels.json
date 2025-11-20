@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/ldtkloader-populate"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/c1245c1c915413009493ed9300157e2a/ldtkloader-populate.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/55eed481f83fd78543d2b9eb7b67bb91/ldtkloader-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-build.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-download.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-install.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-test.rule"
+		},
+		{
+			"file" : "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/5d716a0fb7359f6c605b6b3eb1eb4f72/ldtkloader-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ldtkloader-populate"
+		],
+		"name" : "ldtkloader-populate"
+	}
+}

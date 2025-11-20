@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\c1245c1c915413009493ed9300157e2a\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B87258C1-25C9-364B-8C56-156C4513060F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

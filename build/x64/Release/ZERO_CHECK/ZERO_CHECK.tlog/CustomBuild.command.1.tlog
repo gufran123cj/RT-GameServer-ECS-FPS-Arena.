@@ -1,0 +1,10 @@
+^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\CMAKEFILES\67118E468F1AEF817AFFC693D68D52A7\GENERATE.STAMP.RULE
+setlocal
+D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/GameServer.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
