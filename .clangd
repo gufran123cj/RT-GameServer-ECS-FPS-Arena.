@@ -1,0 +1,56 @@
+# Clangd configuration for RT-GameServer-ECS-FPS-Arena
+# This file provides IntelliSense support for C++ development
+
+CompileFlags:
+  Add:
+    # Main include directories (using absolute paths for Windows compatibility)
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/include'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/include/common'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/include/json'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/include/LDtkLoader'
+    
+    # Source directories (for header-only includes)
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src'
+    
+    # Third-party libraries
+    # SFML - CMakeLists.txt uses D:/SFML-2.6.0 (primary), also check local
+    # Note: Must be the parent directory so <SFML/Window.hpp> resolves correctly
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/third_party/SFML-2.6.0/include'
+    
+    # C++ standard (matches CMakeLists.txt)
+    - '-std=c++17'
+    
+    # LDtkLoader (from CMake FetchContent)
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/build/_deps/ldtkloader-src/include'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/build/_deps/ldtkloader-build/include'
+    
+    # Planned directories (will be created during development)
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/core'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/core/components'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/core/systems'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/network'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/server'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/server/systems'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/client'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/client/systems'
+    - '-ID:/RT-GameServer-ECS-FPS-Arena/src/common'
+  
+  # Use CMake compilation database if available
+  CompilationDatabase: build
+
+Diagnostics:
+  # Disable unused includes warning (common in game development)
+  UnusedIncludes: None
+  # Disable missing includes warning (clangd can be too strict)
+  MissingIncludes: None
+  # Enable all other diagnostics
+  ClangTidy:
+    Add: 
+      - '*'
+    Remove:
+      - 'readability-*'  # Too verbose for game code
+      - 'modernize-*'     # Can be too aggressive
+
+Index:
+  # Background indexing for better performance
+  Background: Build
