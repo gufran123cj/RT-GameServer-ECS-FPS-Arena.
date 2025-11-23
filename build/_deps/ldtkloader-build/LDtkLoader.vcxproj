@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9C864ADC-63CD-37A7-99AD-8489827377BD}</ProjectGuid>
+    <ProjectGuid>{09E0DD00-771B-3290-B663-F0E487786DC1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,32 +59,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\lib\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\lib\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LDtkLoader.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LDtkLoader-d</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\lib\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\lib\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LDtkLoader.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LDtkLoader</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\lib\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\lib\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LDtkLoader.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LDtkLoader</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\lib\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\lib\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LDtkLoader.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LDtkLoader</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <FloatingPointModel></FloatingPointModel>
@@ -95,20 +93,21 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -121,13 +120,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <ConformanceMode>true</ConformanceMode>
       <ExceptionHandling>Sync</ExceptionHandling>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
@@ -137,10 +134,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
@@ -149,10 +147,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -165,13 +163,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <ConformanceMode>true</ConformanceMode>
       <ExceptionHandling>Sync</ExceptionHandling>
       <FloatingPointModel></FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
@@ -181,10 +177,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
@@ -193,10 +190,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -209,13 +206,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <FloatingPointModel></FloatingPointModel>
@@ -226,20 +221,21 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Real-Time Game Server ECS (FPS-lite Arena)\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\ecs;D:\Real-Time Game Server ECS (FPS-lite Arena)\net;D:\Real-Time Game Server ECS (FPS-lite Arena)\physics;D:\Real-Time Game Server ECS (FPS-lite Arena)\matchmaker;D:\Real-Time Game Server ECS (FPS-lite Arena)\anti-cheat-lite;D:\Real-Time Game Server ECS (FPS-lite Arena)\components;D:\Real-Time Game Server ECS (FPS-lite Arena)\systems;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -251,11 +247,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -263,12 +259,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\CMakeFiles\4.2.0-rc2\CMakeCCompiler.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Version.hpp.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Version.hpp.in;D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -276,12 +272,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\CMakeFiles\4.2.0-rc2\CMakeCCompiler.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Version.hpp.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Version.hpp.in;D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -289,12 +285,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\CMakeFiles\4.2.0-rc2\CMakeCCompiler.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Version.hpp.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Version.hpp.in;D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -302,49 +298,49 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\CMakeFiles\4.2.0-rc2\CMakeCCompiler.cmake;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Version.hpp.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\cmake\LDtkLoaderConfig.cmake.in;C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Version.hpp.in;D:\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMinorVersion.cmake.in;D:\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;D:\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;D:\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\DataTypes.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Entity.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\EntityDef.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Enum.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\FieldsContainer.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Layer.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\LayerDef.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Level.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Project.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\TagsContainer.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Tile.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Tileset.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\Utils.cpp" />
-    <ClCompile Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\src\World.cpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\DataTypes.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Entity.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Enum.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Field.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Layer.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Level.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Project.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Tile.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Tileset.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\Utils.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\World.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\containers\FieldsContainer.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\containers\TagsContainer.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\EntityDef.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\FieldDef.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\defs\LayerDef.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\json_fwd.hpp" />
-    <ClInclude Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\optional.hpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\DataTypes.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Entity.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\EntityDef.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Enum.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\FieldsContainer.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Layer.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\LayerDef.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Level.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Project.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\TagsContainer.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Tile.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Tileset.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\Utils.cpp" />
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\src\World.cpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\DataTypes.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Entity.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Enum.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Field.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Layer.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Level.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Project.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Tile.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Tileset.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\Utils.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\World.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\containers\FieldsContainer.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\containers\TagsContainer.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\defs\EntityDef.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\defs\FieldDef.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\defs\LayerDef.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\json_fwd.hpp" />
+    <ClInclude Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src\include\LDtkLoader\thirdparty\optional.hpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\ZERO_CHECK.vcxproj">
-      <Project>{FA1C4FDE-CA79-33C5-836C-01D09BB34FFF}</Project>
+    <ProjectReference Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\ZERO_CHECK.vcxproj">
+      <Project>{89EE80D0-5293-37BE-AE6F-C71882E7A74F}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

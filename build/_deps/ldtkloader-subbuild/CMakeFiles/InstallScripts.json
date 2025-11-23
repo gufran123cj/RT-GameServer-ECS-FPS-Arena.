@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/cmake_install.cmake"
+		"C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

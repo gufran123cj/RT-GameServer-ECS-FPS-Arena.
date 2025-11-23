@@ -1,4 +1,10 @@
 # CMake generation dependency list for this directory.
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/CMakeLists.txt
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/CMakeFiles/4.2.0-rc2/CMakeCCompiler.cmake
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/CMakeFiles/4.2.0-rc2/CMakeCXXCompiler.cmake
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/CMakeFiles/4.2.0-rc2/CMakeRCCompiler.cmake
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/CMakeFiles/4.2.0-rc2/CMakeSystem.cmake
+D:/CMake/share/cmake-4.2/Modules/CMakeCInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeCXXInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeCommonLanguageInclude.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeGenericSystem.cmake
@@ -8,6 +14,7 @@ D:/CMake/share/cmake-4.2/Modules/CMakeRCInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInitialize.cmake
 D:/CMake/share/cmake-4.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+D:/CMake/share/cmake-4.2/Modules/Compiler/MSVC-C.cmake
 D:/CMake/share/cmake-4.2/Modules/Compiler/MSVC-CXX.cmake
 D:/CMake/share/cmake-4.2/Modules/Compiler/MSVC.cmake
 D:/CMake/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake
@@ -16,21 +23,21 @@ D:/CMake/share/cmake-4.2/Modules/FetchContent/CMakeLists.cmake.in
 D:/CMake/share/cmake-4.2/Modules/FindGit.cmake
 D:/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake
 D:/CMake/share/cmake-4.2/Modules/FindPackageMessage.cmake
+D:/CMake/share/cmake-4.2/Modules/Internal/CMakeCLinkerInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/Internal/CMakeCXXLinkerInformation.cmake
 D:/CMake/share/cmake-4.2/Modules/Internal/CMakeCommonLinkerInformation.cmake
+D:/CMake/share/cmake-4.2/Modules/Linker/MSVC-C.cmake
 D:/CMake/share/cmake-4.2/Modules/Linker/MSVC-CXX.cmake
 D:/CMake/share/cmake-4.2/Modules/Linker/MSVC.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-MSVC-C.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-MSVC-CXX.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-MSVC.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows-Initialize.cmake
+D:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-C.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-CXX.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake
-D:/Real-Time Game Server ECS (FPS-lite Arena)/CMakeLists.txt
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/CMakeFiles/4.2.0-rc2/CMakeCXXCompiler.cmake
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/CMakeFiles/4.2.0-rc2/CMakeRCCompiler.cmake
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/CMakeFiles/4.2.0-rc2/CMakeSystem.cmake
 D:/SFML-2.6.0/lib/cmake/SFML/SFMLConfig.cmake
 D:/SFML-2.6.0/lib/cmake/SFML/SFMLConfigDependencies.cmake
 D:/SFML-2.6.0/lib/cmake/SFML/SFMLConfigVersion.cmake

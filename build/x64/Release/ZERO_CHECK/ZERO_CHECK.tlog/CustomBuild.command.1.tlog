@@ -1,6 +1,6 @@
-^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\CMAKEFILES\67118E468F1AEF817AFFC693D68D52A7\GENERATE.STAMP.RULE
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\CMAKEFILES\8C8CA03558B56A90CCA33BDB270141EB\GENERATE.STAMP.RULE
 setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/GameServer.sln"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/LDtkSFMLGame.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

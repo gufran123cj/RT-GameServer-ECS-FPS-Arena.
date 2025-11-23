@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Real-Time Game Server ECS (FPS-lite Arena)\build\x64\Release\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Real-Time Game Server ECS (FPS-lite Arena)\build\Release\GameServer.exe</FullPath>
+      <FullPath>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\bin\Release\LDtkSFMLGame.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Real-Time Game Server ECS (FPS-lite Arena)\build\x64\Release\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\x64\Release\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

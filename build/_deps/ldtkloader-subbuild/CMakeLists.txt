@@ -28,8 +28,8 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 include(ExternalProject)
 ExternalProject_Add(ldtkloader-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/Madour/LDtkLoader" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "1.5.3.1"
-                    SOURCE_DIR          "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-src"
-                    BINARY_DIR          "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-build"
+                    SOURCE_DIR          "C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-src"
+                    BINARY_DIR          "C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\src\TileMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D447F27C-34E4-323A-9BED-9EECA9256A35}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

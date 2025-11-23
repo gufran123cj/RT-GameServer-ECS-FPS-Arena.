@@ -1,4 +1,7 @@
 # CMake generation dependency list for this directory.
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeFiles/4.2.0-rc2/CMakeSystem.cmake
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeLists.txt
+C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-mkdirs.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeGenericSystem.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeInitializeConfigs.cmake
 D:/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInformation.cmake
@@ -15,6 +18,3 @@ D:/CMake/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows-Initialize.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake
 D:/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/4.2.0-rc2/CMakeSystem.cmake
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeLists.txt
-D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-mkdirs.cmake

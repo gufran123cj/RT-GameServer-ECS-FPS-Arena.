@@ -1,0 +1,150 @@
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-MKDIR.RULE
+setlocal
+D:\CMake\bin\cmake.exe -Dcfgdir=/Debug -P C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/tmp/ldtkloader-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-PATCH.RULE
+setlocal
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\F6516953AE6142537A8BE856E8EC4D7C\LDTKLOADER-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\76FE26542D6E946ECECB689F39298531\LDTKLOADER-POPULATE-COMPLETE.RULE
+setlocal
+D:\CMake\bin\cmake.exe -E make_directory C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeFiles/Debug/ldtkloader-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E touch C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/ldtkloader-populate-prefix/src/ldtkloader-populate-stamp/Debug/ldtkloader-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKEFILES\B62055D3F45032A9C63FD98844759631\LDTKLOADER-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

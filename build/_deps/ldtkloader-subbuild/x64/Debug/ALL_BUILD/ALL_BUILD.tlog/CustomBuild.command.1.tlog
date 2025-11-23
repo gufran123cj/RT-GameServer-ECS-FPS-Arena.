@@ -1,6 +1,6 @@
-^D:\REAL-TIME GAME SERVER ECS (FPS-LITE ARENA)\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKELISTS.TXT
+^C:\USERS\GUFRA\DOWNLOADS\LDTK-SFML-GAME-MASTER\LDTK-SFML-GAME-MASTER\BUILD\_DEPS\LDTKLOADER-SUBBUILD\CMAKELISTS.TXT
 setlocal
-D:\CMake\bin\cmake.exe "-SD:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild" "-BD:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild" --check-stamp-file "D:/Real-Time Game Server ECS (FPS-lite Arena)/build/_deps/ldtkloader-subbuild/CMakeFiles/generate.stamp"
+D:\CMake\bin\cmake.exe -SC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild -BC:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild --check-stamp-file C:/Users/gufra/Downloads/LDtk-SFML-Game-master/LDtk-SFML-Game-master/build/_deps/ldtkloader-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

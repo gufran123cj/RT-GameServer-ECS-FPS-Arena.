@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-mkdir.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-mkdir.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-download.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-download.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-update.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-update.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-patch.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-patch.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-configure.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-configure.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-build.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-build.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-install.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-install.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\5d716a0fb7359f6c605b6b3eb1eb4f72\ldtkloader-populate-test.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\f6516953ae6142537a8be856e8ec4d7c\ldtkloader-populate-test.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\55eed481f83fd78543d2b9eb7b67bb91\ldtkloader-populate-complete.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\76fe26542d6e946ececb689f39298531\ldtkloader-populate-complete.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\c1245c1c915413009493ed9300157e2a\ldtkloader-populate.rule">
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\b62055d3f45032a9c63fd98844759631\ldtkloader-populate.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="D:\Real-Time Game Server ECS (FPS-lite Arena)\build\_deps\ldtkloader-subbuild\CMakeFiles\ldtkloader-populate" />
+    <None Include="C:\Users\gufra\Downloads\LDtk-SFML-Game-master\LDtk-SFML-Game-master\build\_deps\ldtkloader-subbuild\CMakeFiles\ldtkloader-populate" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{B87258C1-25C9-364B-8C56-156C4513060F}</UniqueIdentifier>
+      <UniqueIdentifier>{10085A0C-F03C-3FAE-AA8D-6210E15A40BA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
