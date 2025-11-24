@@ -68,6 +68,16 @@ int ServerNetworkManager::processPackets() {
     return packetCount;
 }
 
+ServerNetworkManager::LastInput ServerNetworkManager::getLastInput(const game::network::Address& address) const {
+    auto it = lastInputPackets.find(address);
+    if (it != lastInputPackets.end() && it->second.valid) {
+        LastInput result = it->second;
+        it->second.valid = false;  // Mark as consumed
+        return result;
+    }
+    return LastInput{};
+}
+
 void ServerNetworkManager::handlePacket(const game::network::Address& from, const game::network::Packet& packet) {
     game::network::PacketType type = packet.getType();
     
@@ -83,6 +93,12 @@ void ServerNetworkManager::handlePacket(const game::network::Address& from, cons
             sf::Vector2f initialPos(posX, posY);
             game::core::Entity entity = handleConnect(from, initialPos);
             sendConnectAck(from, entity.id);
+            break;
+        }
+        
+        case game::network::PacketType::INPUT: {
+            // Store INPUT packet for GameServer to process
+            lastInputPackets[from] = {from, packet, true};
             break;
         }
         

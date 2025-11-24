@@ -1,6 +1,7 @@
 #include "GameServer.hpp"
 #include "../network/Packet.hpp"
 #include "../network/PacketTypes.hpp"
+#include "../core/systems/MovementSystem.hpp"
 #include <iostream>
 #include <thread>
 #include <cmath>
@@ -24,12 +25,14 @@ bool GameServer::initialize(const ServerConfig& cfg) {
         return false;
     }
     
-    // Initialize world
-    // (Systems will be registered later if needed)
+    // Initialize world and register systems
+    world.registerSystem(std::make_unique<game::core::systems::MovementSystem>());
+    world.initialize();
     
     running = true;
     lastUpdateTime = std::chrono::steady_clock::now();
     lastSnapshotTime = lastUpdateTime;
+    lastDebugLogTime = lastUpdateTime;
     
     std::cout << "GameServer initialized:" << std::endl;
     std::cout << "  Port: " << config.port << std::endl;
@@ -85,6 +88,43 @@ void GameServer::run() {
             lastSnapshotTime = currentTime;
         }
         
+        // Debug log: Print entity positions every 5 seconds
+        auto debugLogElapsed = std::chrono::duration<float>(
+            currentTime - lastDebugLogTime
+        ).count();
+        
+        if (debugLogElapsed >= 5.0f) {
+            std::cout << "\n=== SERVER DEBUG LOG (Entity Positions) ===" << std::endl;
+            auto entities = world.getEntitiesWith<
+                game::core::components::PositionComponent,
+                game::core::components::VelocityComponent
+            >();
+            
+            for (game::core::Entity::ID entityID : entities) {
+                const auto* pos = world.getComponent<game::core::components::PositionComponent>(entityID);
+                const auto* vel = world.getComponent<game::core::components::VelocityComponent>(entityID);
+                
+                if (pos && vel) {
+                    // Find which client owns this entity
+                    std::string clientInfo = "Unknown";
+                    for (const auto& [addr, conn] : networkManager.getConnections()) {
+                        if (conn.connected && conn.entity.isValid() && conn.entity.id == entityID) {
+                            clientInfo = addr.toString();
+                            break;
+                        }
+                    }
+                    
+                    std::cout << "  Entity ID: " << entityID 
+                              << " | Client: " << clientInfo
+                              << " | Position: (" << pos->position.x << ", " << pos->position.y << ")"
+                              << " | Velocity: (" << vel->velocity.x << ", " << vel->velocity.y << ")"
+                              << std::endl;
+                }
+            }
+            std::cout << "=== END DEBUG LOG ===\n" << std::endl;
+            lastDebugLogTime = currentTime;
+        }
+        
         // Small sleep to prevent 100% CPU usage
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -97,6 +137,28 @@ void GameServer::stop() {
 void GameServer::processNetwork() {
     // Process incoming packets
     networkManager.processPackets();
+    
+    // Process INPUT packets from clients
+    for (const auto& [addr, conn] : networkManager.getConnections()) {
+        if (conn.connected && conn.entity.isValid()) {
+            auto input = networkManager.getLastInput(addr);
+            if (input.valid) {
+                // Read input data from packet
+                game::network::Packet& packet = input.packet;
+                packet.resetRead();
+                
+                float velX = 0, velY = 0;
+                if (packet.read(velX) && packet.read(velY)) {
+                    // Update entity velocity based on input
+                    auto* velComp = world.getComponent<game::core::components::VelocityComponent>(conn.entity.id);
+                    if (velComp) {
+                        velComp->velocity.x = velX;
+                        velComp->velocity.y = velY;
+                    }
+                }
+            }
+        }
+    }
     
     // Check for connection timeouts
     networkManager.checkTimeouts(config.connectionTimeout);

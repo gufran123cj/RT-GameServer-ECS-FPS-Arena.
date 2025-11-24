@@ -74,6 +74,7 @@ private:
     bool running;
     std::chrono::steady_clock::time_point lastUpdateTime;
     std::chrono::steady_clock::time_point lastSnapshotTime;
+    std::chrono::steady_clock::time_point lastDebugLogTime;
     float accumulator;  // For fixed timestep
     
     /**

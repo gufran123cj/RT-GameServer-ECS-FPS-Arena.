@@ -38,6 +38,8 @@ public:
     void onConnectAck(game::core::Entity::ID entityID) override {
         std::cout << "✅ Connected to server! Entity ID: " << entityID << std::endl;
         myEntityID = entityID;
+        // Also update base class entityID for consistency
+        this->entityID = entityID;
     }
     
     void onSnapshot(game::network::Packet& packet) override {
@@ -107,6 +109,9 @@ struct Game {
     std::string serverIp = "127.0.0.1";
     uint16_t serverPort = 7777;
     sf::Vector2f initialPlayerPosition;  // LDtk'den yüklenen initial pozisyon
+    
+    // Debug timing
+    std::chrono::steady_clock::time_point lastDebugLogTime;
 
     void init(const ldtk::Project& ldtk, bool reloading = false) {
         // get the world from the project
@@ -175,37 +180,42 @@ struct Game {
     }
 
     void update() {
-        // move player with keyboard arrows or WASD
+        // Calculate input velocity from keyboard
+        float velX = 0.0f, velY = 0.0f;
+        const float moveSpeed = 60.0f;  // pixels per second (server will use this in fixed timestep)
+        
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            player.move(0, -1.5);
+            velY = -moveSpeed;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            player.move(0, 1.5);
+            velY = moveSpeed;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            player.move(-1.5, 0);
+            velX = -moveSpeed;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            player.move(1.5, 0);
-
-        // do collision checks
-        auto player_collider = getPlayerCollider(player);
-        for (auto& rect : colliders) {
-            sf::FloatRect intersect;
-            if (player_collider.intersects(rect, intersect)) {
-                if (intersect.width < intersect.height) {
-                    if (player_collider.left < intersect.left)
-                        player.move(-intersect.width, 0);
-                    else
-                        player.move(intersect.width, 0);
-                }
-                else {
-                    if (player_collider.top < intersect.top)
-                        player.move(0, -intersect.height);
-                    else
-                        player.move(0, intersect.height);
-                }
+            velX = moveSpeed;
+        
+        // Send input to server if connected
+        if (connectedToServer && networkClient.isConnected()) {
+            game::network::Packet inputPacket(game::network::PacketType::INPUT);
+            inputPacket.setSequence(1);
+            inputPacket.setTimestamp(static_cast<uint32_t>(std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::steady_clock::now().time_since_epoch()
+            ).count()));
+            inputPacket.write(velX);
+            inputPacket.write(velY);
+            networkClient.sendPacket(inputPacket);
+        }
+        
+        // Update player position from server snapshot (if connected)
+        if (connectedToServer && networkClient.myEntityID != 0) {
+            auto it = networkClient.remoteEntities.find(networkClient.myEntityID);
+            if (it != networkClient.remoteEntities.end()) {
+                // Server'dan gelen pozisyonu kullan
+                player.setPosition(it->second.position);
             }
+            // Eğer snapshot henüz gelmemişse, player pozisyonu değişmez (local pozisyon kalır)
         }
 
-        // update camera
+        // update camera (follow player position from server)
         camera.move((player.getPosition() - camera.getCenter())/5.f);
 
         auto cam_size = camera.getSize();
@@ -245,34 +255,26 @@ struct Game {
                 target.draw(getColliderShape(rect));
         }
 
-        // Draw all players from server snapshot (including ourselves)
+        // Draw local player (always visible, position updated from server if connected)
+        target.draw(player);
+        
+        // Draw other players from server snapshot (excluding ourselves)
         if (connectedToServer && !networkClient.remoteEntities.empty()) {
             for (const auto& [entityID, remoteEntity] : networkClient.remoteEntities) {
-                // If this is our entity, use local player shape but update position
+                // Skip our own entity (already drawn above)
                 if (entityID == networkClient.myEntityID && networkClient.myEntityID != 0) {
-                    // Server pozisyonu kullan
-                    // Server pozisyonu muhtemelen top-left, player origin (4, 16) = bottom-center
-                    // Origin offset: (4, 16) = (size.x/2, size.y)
-                    sf::Vector2f serverPos = remoteEntity.position;
-                    // Server pozisyonu top-left ise, origin'e göre ayarla
-                    // Eğer server pozisyonu center ise, direkt kullan
-                    // Şimdilik server pozisyonunu direkt kullan (server'da center olarak saklanıyor olabilir)
-                    player.setPosition(serverPos);
-                    target.draw(player);
-                } else {
-                    // Draw other players (remote entities)
-                    sf::RectangleShape remotePlayer;
-                    remotePlayer.setSize(remoteEntity.size);
-                    remotePlayer.setPosition(remoteEntity.position);
-                    remotePlayer.setFillColor(remoteEntity.color);
-                    // Set origin to match local player (bottom-center)
-                    remotePlayer.setOrigin(remoteEntity.size.x * 0.5f, remoteEntity.size.y);
-                    target.draw(remotePlayer);
+                    continue;
                 }
+                
+                // Draw other players (remote entities)
+                sf::RectangleShape remotePlayer;
+                remotePlayer.setSize(remoteEntity.size);
+                remotePlayer.setPosition(remoteEntity.position);
+                remotePlayer.setFillColor(remoteEntity.color);
+                // Set origin to match local player (bottom-center)
+                remotePlayer.setOrigin(remoteEntity.size.x * 0.5f, remoteEntity.size.y);
+                target.draw(remotePlayer);
             }
-        } else {
-            // Not connected or no entities yet, draw local player
-        target.draw(player);
         }
         if (show_colliders) {
             // draw player collider
@@ -308,6 +310,9 @@ int main() {
     // Network heartbeat timer
     auto lastHeartbeat = std::chrono::steady_clock::now();
     const float heartbeatInterval = 1.0f;  // 1 second
+    
+    // Debug log timer
+    game.lastDebugLogTime = std::chrono::steady_clock::now();
 
     // start game loop
     while(window.isOpen()) {
@@ -355,6 +360,41 @@ int main() {
 
         // UPDATE
         game.update();
+
+        // Debug log: Print positions every 5 seconds
+        auto now = std::chrono::steady_clock::now();
+        auto debugLogElapsed = std::chrono::duration<float>(
+            now - game.lastDebugLogTime
+        ).count();
+        
+        if (debugLogElapsed >= 5.0f) {
+            std::cout << "\n=== CLIENT DEBUG LOG (Player Positions) ===" << std::endl;
+            std::cout << "  Local Player Position: (" << game.player.getPosition().x 
+                      << ", " << game.player.getPosition().y << ")" << std::endl;
+            std::cout << "  My Entity ID: " << game.networkClient.myEntityID << std::endl;
+            std::cout << "  Connected to Server: " << (game.connectedToServer ? "Yes" : "No") << std::endl;
+            
+            if (game.connectedToServer && game.networkClient.myEntityID != 0) {
+                auto it = game.networkClient.remoteEntities.find(game.networkClient.myEntityID);
+                if (it != game.networkClient.remoteEntities.end()) {
+                    std::cout << "  Server Position (from snapshot): (" 
+                              << it->second.position.x << ", " << it->second.position.y << ")" << std::endl;
+                    std::cout << "  Server Entity Size: (" 
+                              << it->second.size.x << ", " << it->second.size.y << ")" << std::endl;
+                } else {
+                    std::cout << "  Server Position: NOT FOUND in snapshot!" << std::endl;
+                }
+            }
+            
+            std::cout << "  Total Remote Entities: " << game.networkClient.remoteEntities.size() << std::endl;
+            for (const auto& [entityID, remoteEntity] : game.networkClient.remoteEntities) {
+                std::cout << "    Entity ID: " << entityID 
+                          << " | Position: (" << remoteEntity.position.x 
+                          << ", " << remoteEntity.position.y << ")" << std::endl;
+            }
+            std::cout << "=== END CLIENT DEBUG LOG ===\n" << std::endl;
+            game.lastDebugLogTime = now;
+        }
 
         // RENDER
         window.clear();

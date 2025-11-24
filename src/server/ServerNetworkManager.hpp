@@ -122,10 +122,21 @@ public:
      */
     void setClientEntity(const game::network::Address& address, const game::core::Entity& entity);
     
+    /**
+     * Get last received INPUT packet for an address (for GameServer processing)
+     */
+    struct LastInput {
+        game::network::Address from;
+        game::network::Packet packet;
+        bool valid = false;
+    };
+    LastInput getLastInput(const game::network::Address& address) const;
+    
 private:
     sf::UdpSocket socket;
     std::unordered_map<game::network::Address, ClientConnection, game::network::Address::Hash> connections;
     mutable std::unordered_map<game::network::Address, sf::Vector2f, game::network::Address::Hash> clientInitialPositions;
+    mutable std::unordered_map<game::network::Address, LastInput, game::network::Address::Hash> lastInputPackets;
     uint32_t nextSequenceNumber;
     
     /**
