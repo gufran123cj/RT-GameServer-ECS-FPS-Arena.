@@ -60,11 +60,21 @@ set(CLIENT_NETWORK_SOURCES
     src/client/ClientNetworkManager.cpp
 )
 
+# Game MVC sources
+set(GAME_SOURCES
+    src/game/PlayerCollision.cpp
+    src/game/GameClient.cpp
+    src/game/GameModel.cpp
+    src/game/GameView.cpp
+    src/game/GameController.cpp
+)
+
 add_executable(LDtkSFMLGame 
     src/main.cpp 
     src/TileMap.cpp
     ${ECS_CORE_SOURCES}
     ${CLIENT_NETWORK_SOURCES}
+    ${GAME_SOURCES}
 )
 set_target_properties(LDtkSFMLGame PROPERTIES DEBUG_POSTFIX -d RUNTIME_OUTPUT_DIRECTORY bin)
 target_link_libraries(LDtkSFMLGame PRIVATE LDtkLoader::LDtkLoader sfml-graphics sfml-network)
