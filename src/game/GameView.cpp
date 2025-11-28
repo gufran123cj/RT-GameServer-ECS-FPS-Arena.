@@ -3,11 +3,21 @@
 namespace game::client {
 
 void GameView::render(sf::RenderTarget& target, GameModel& model) {
-    target.setView(model.camera);
-    
-    // Draw map background layers
-    target.draw(model.tilemap.getLayer("Ground"));
-    target.draw(model.tilemap.getLayer("Trees"));
+    try {
+        target.setView(model.camera);
+        
+        // Draw map background layers (try-catch for each layer in case names differ)
+        // New map uses "Default_floor" instead of "Ground"
+        try {
+            target.draw(model.tilemap.getLayer("Default_floor"));
+        } catch (const std::exception& ex) {
+            // Try old layer name as fallback
+            try {
+                target.draw(model.tilemap.getLayer("Ground"));
+            } catch (const std::exception& ex2) {
+                std::cerr << "WARNING: Could not draw floor layer: " << ex2.what() << std::endl;
+            }
+        }
     
     if (model.show_colliders) {
         // Draw map colliders
@@ -49,8 +59,23 @@ void GameView::render(sf::RenderTarget& target, GameModel& model) {
         ));
     }
     
-    // Draw map top layer
-    target.draw(model.tilemap.getLayer("Trees_top"));
+        // Draw map top layer (walls, trees, etc.)
+        // New map uses "Wall_tops" instead of "Trees_top"
+        try {
+            target.draw(model.tilemap.getLayer("Wall_tops"));
+        } catch (const std::exception& ex) {
+            // Try old layer name as fallback
+            try {
+                target.draw(model.tilemap.getLayer("Trees_top"));
+            } catch (const std::exception& ex2) {
+                std::cerr << "WARNING: Could not draw top layer: " << ex2.what() << std::endl;
+            }
+        }
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "ERROR in GameView::render: " << ex.what() << std::endl;
+        throw;
+    }
 }
 
 void GameView::updateCamera(GameModel& model) {

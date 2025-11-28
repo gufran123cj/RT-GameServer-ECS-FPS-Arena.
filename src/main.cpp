@@ -15,7 +15,7 @@ using namespace game::client;
 int main() {
     // Load LDtk project
     ldtk::Project project;
-    std::string ldtk_filename = "assets/maps/world1.ldtk";
+    std::string ldtk_filename = "assets/maps/map.ldtk";
     try {
         project.loadFromFile(ldtk_filename);
         std::cout << "LDtk World \"" << project.getFilePath() << "\" was loaded successfully." << std::endl;
@@ -27,7 +27,15 @@ int main() {
 
     // Initialize game model
     GameModel model;
-    model.init(project);
+    try {
+        model.init(project);
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "ERROR: Failed to initialize game model: " << ex.what() << std::endl;
+        std::cerr << "Press Enter to exit..." << std::endl;
+        std::cin.get();
+        return 1;
+    }
 
     // Create window
     sf::RenderWindow window;
@@ -89,9 +97,17 @@ int main() {
         GameView::updateCamera(model);
 
         // Render game
-        window.clear();
-        GameView::render(window, model);
-        window.display();
+        try {
+            window.clear();
+            GameView::render(window, model);
+            window.display();
+        }
+        catch (const std::exception& ex) {
+            std::cerr << "ERROR during rendering: " << ex.what() << std::endl;
+            std::cerr << "Press Enter to exit..." << std::endl;
+            std::cin.get();
+            window.close();
+        }
     }
     
     // Disconnect from server

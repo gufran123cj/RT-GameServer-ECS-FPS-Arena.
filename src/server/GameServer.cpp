@@ -2,6 +2,8 @@
 #include "../network/Packet.hpp"
 #include "../network/PacketTypes.hpp"
 #include "../core/systems/MovementSystem.hpp"
+#include "systems/CollisionSystem.hpp"
+#include <LDtkLoader/Project.hpp>
 #include <iostream>
 #include <thread>
 #include <cmath>
@@ -25,7 +27,13 @@ bool GameServer::initialize(const ServerConfig& cfg) {
         return false;
     }
     
+    // Load colliders (static obstacles)
+    loadColliders();
+    
     // Initialize world and register systems
+    // IMPORTANT: CollisionSystem must run BEFORE MovementSystem
+    // CollisionSystem priority: 50, MovementSystem priority: 100
+    world.registerSystem(std::make_unique<systems::CollisionSystem>(colliders));
     world.registerSystem(std::make_unique<game::core::systems::MovementSystem>());
     world.initialize();
     
@@ -189,7 +197,7 @@ game::core::Entity GameServer::spawnPlayer(const game::network::Address& address
     world.addComponent<game::core::components::VelocityComponent>(entity.id, velComp);
     
     // Use same player size as client
-    constexpr sf::Vector2f PLAYER_SIZE = {8.0f, 16.0f};
+    const sf::Vector2f PLAYER_SIZE = {3.0f, 5.0f};
     game::core::components::SpriteComponent spriteComp(PLAYER_SIZE, sf::Color::Green);
     world.addComponent<game::core::components::SpriteComponent>(entity.id, spriteComp);
     
@@ -230,6 +238,60 @@ void GameServer::createSnapshotPacket(game::network::Packet& packet) {
             packet.write(sprite->color.a);
         }
     }
+}
+
+void GameServer::loadColliders() {
+    colliders.clear();
+    
+    try {
+        // Load LDtk project (same file as client)
+        ldtk::Project project;
+        std::string ldtk_filename = "assets/maps/map.ldtk";
+        project.loadFromFile(ldtk_filename);
+        
+        // Get the world and level
+        auto& world = project.getWorld();
+        auto& level0 = world.getLevel("World_Level_0");
+        
+        // Load colliders from IntGrid "Collisions" layer
+        auto& collisions_layer = level0.getLayer("Collisions");
+        if (collisions_layer.getType() == ldtk::LayerType::IntGrid) {
+            // Manually iterate through all grid cells to find walls (value = 1)
+            int gridSize = collisions_layer.getCellSize();
+            const auto& gridSize_pt = collisions_layer.getGridSize();
+            int gridWidth = gridSize_pt.x;
+            int gridHeight = gridSize_pt.y;
+            
+            int wallCount = 0;
+            // Check each grid cell
+            for (int y = 0; y < gridHeight; ++y) {
+                for (int x = 0; x < gridWidth; ++x) {
+                    try {
+                        const auto& intGridVal = collisions_layer.getIntGridVal(x, y);
+                        // Value 1 = walls
+                        if (intGridVal.value == 1) {
+                            float pxX = static_cast<float>(x * gridSize);
+                            float pxY = static_cast<float>(y * gridSize);
+                            float cellSize = static_cast<float>(gridSize);
+                            
+                            colliders.emplace_back(pxX, pxY, cellSize, cellSize);
+                            wallCount++;
+                        }
+                    } catch (...) {
+                        // Skip invalid cells
+                        continue;
+                    }
+                }
+            }
+            
+            std::cout << "Server: Loaded " << wallCount << " collision cells from IntGrid layer" << std::endl;
+        }
+    } catch (const std::exception& ex) {
+        std::cerr << "Server WARNING: Could not load collisions from LDtk file: " << ex.what() << std::endl;
+        std::cerr << "Server will run without collision detection!" << std::endl;
+    }
+    
+    std::cout << "Server: Total colliders loaded: " << colliders.size() << std::endl;
 }
 
 } // namespace game::server

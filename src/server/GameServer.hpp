@@ -8,6 +8,8 @@
 #include "../core/components/PositionComponent.hpp"
 #include "../core/components/VelocityComponent.hpp"
 #include "../core/components/SpriteComponent.hpp"
+#include <vector>
+#include <SFML/Graphics/Rect.hpp>
 
 namespace game::server {
 
@@ -71,6 +73,9 @@ private:
     ServerNetworkManager networkManager;
     game::core::World world;
     
+    // Collision data
+    std::vector<sf::FloatRect> colliders;  // Static colliders (walls, obstacles)
+    
     bool running;
     std::chrono::steady_clock::time_point lastUpdateTime;
     std::chrono::steady_clock::time_point lastSnapshotTime;
@@ -101,6 +106,12 @@ private:
      * Create snapshot packet from world state
      */
     void createSnapshotPacket(game::network::Packet& packet);
+    
+    /**
+     * Load colliders (for future LDtk integration)
+     * For now, colliders are empty - can be extended to load from LDtk
+     */
+    void loadColliders();
 };
 
 } // namespace game::server

@@ -14,7 +14,7 @@ namespace Constants {
     constexpr float PLAYER_MOVE_SPEED = 60.0f;
     constexpr float TARGET_FPS = 60.0f;
     constexpr float FIXED_DELTA_TIME = 1.0f / TARGET_FPS;
-    const sf::Vector2f PLAYER_SIZE = {8.0f, 16.0f};
+    const sf::Vector2f PLAYER_SIZE = {3.0f, 5.0f};
     const sf::Vector2f PLAYER_INITIAL_POSITION = {150.0f, 100.0f};
     
     // Collision prediction
@@ -22,7 +22,7 @@ namespace Constants {
     
     // Camera settings
     const sf::Vector2f CAMERA_SIZE = {400.0f, 250.0f};
-    constexpr float CAMERA_ZOOM = 0.55f;
+    constexpr float CAMERA_ZOOM = 1.0f;
     
     // Window settings
     constexpr unsigned int WINDOW_WIDTH = 800;

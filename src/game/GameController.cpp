@@ -1,12 +1,26 @@
 #include "GameController.hpp"
 #include "GameConstants.hpp"
 #include <chrono>
+#include <iostream>
 
 namespace game::client {
+
+// Static timer for position logging
+static std::chrono::steady_clock::time_point lastPositionLogTime = std::chrono::steady_clock::now();
+constexpr float POSITION_LOG_INTERVAL = 5.0f;  // seconds
 
 void GameController::update(GameModel& model, const sf::Window& window) {
     // Update player position from server snapshot
     updatePlayerPosition(model);
+    
+    // Log player position every 5 seconds
+    auto now = std::chrono::steady_clock::now();
+    auto elapsed = std::chrono::duration<float>(now - lastPositionLogTime).count();
+    if (elapsed >= POSITION_LOG_INTERVAL) {
+        sf::Vector2f pos = model.player.getPosition();
+        std::cout << "[Position Log] Player X: " << pos.x << ", Y: " << pos.y << std::endl;
+        lastPositionLogTime = now;
+    }
     
     // Handle input and send to server (only if window has focus)
     handleInput(model, window);
@@ -93,10 +107,30 @@ void GameController::handleInput(GameModel& model, const sf::Window& window) {
         }
     }
     
-    // EK KONTROL: Server pozisyonu geçersizse INPUT paketlerini hiç gönderme
+    // EK KONTROL: Server pozisyonu geçersizse, sadece collider'dan UZAKLAŞMA hareketlerine izin ver
+    // Bu sayede player collider içine girdiğinde çıkabilir
     if (model.serverPositionInvalid) {
-        velX = 0.0f;
-        velY = 0.0f;
+        // Eğer hareket collider'dan UZAKLAŞIYORSA (ters yönde), izin ver
+        // Aksi halde input gönderme
+        bool movingAwayFromCollider = false;
+        if (velX != 0 || velY != 0) {
+            // Mevcut pozisyonda collision var mı kontrol et
+            bool currentCollision = PlayerCollision::checkCollision(model.player, model.colliders);
+            if (currentCollision) {
+                // Collider içindeyiz, sadece uzaklaşma hareketlerine izin ver
+                // Basit kontrol: eğer hareket yönünde collision yoksa, uzaklaşıyoruz demektir
+                sf::Vector2f testPos = model.player.getPosition() + sf::Vector2f(
+                    velX != 0 ? (velX > 0 ? 1.0f : -1.0f) : 0.0f,
+                    velY != 0 ? (velY > 0 ? 1.0f : -1.0f) : 0.0f
+                );
+                movingAwayFromCollider = !PlayerCollision::wouldCollideAt(testPos, Constants::PLAYER_SIZE, model.colliders);
+            }
+        }
+        
+        if (!movingAwayFromCollider) {
+            velX = 0.0f;
+            velY = 0.0f;
+        }
     }
     
     // CRITICAL: Only send INPUT if we have a valid entity ID assigned by the server
@@ -126,8 +160,9 @@ bool GameController::wouldCollide(const GameModel& model, float velX, float velY
     // Mevcut pozisyonu al
     sf::Vector2f currentPos = model.player.getPosition();
     
-    // Bir sonraki pozisyonu hesapla (daha büyük adım - birkaç frame ilerisi)
-    const float checkDistance = moveSpeed * deltaTime * Constants::COLLISION_CHECK_FRAMES_AHEAD;
+    // Sadece bir frame ilerisini kontrol et (daha hassas kontrol)
+    // Çok erken durdurmak yerine, gerçekten collider'a girecekse durdur
+    const float checkDistance = moveSpeed * deltaTime;  // Sadece 1 frame ahead
     sf::Vector2f nextPos = currentPos + sf::Vector2f(
         velX != 0 ? (velX > 0 ? checkDistance : -checkDistance) : 0.0f,
         velY != 0 ? (velY > 0 ? checkDistance : -checkDistance) : 0.0f
