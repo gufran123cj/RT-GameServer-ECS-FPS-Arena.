@@ -34,9 +34,9 @@ public:
     static void renderDeathMessage(sf::RenderTarget& target, const GameModel& model);
     
     /**
-     * Render kill count (top-right corner)
+     * Render FPS counter (top-right corner, text box style)
      */
-    static void renderKillCount(sf::RenderTarget& target, const GameModel& model);
+    static void renderFPS(sf::RenderTarget& target, const GameModel& model);
 };
 
 } // namespace game::client

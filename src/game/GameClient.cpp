@@ -1,5 +1,6 @@
 #include "GameClient.hpp"
 #include <SFML/Graphics.hpp>
+#include <chrono>
 
 namespace game::client {
 
@@ -14,6 +15,13 @@ void GameClient::onSnapshot(game::network::Packet& packet) {
     if (!packet.read(entityCount)) {
         return;
     }
+    
+    // Get current time for interpolation
+    auto now = std::chrono::steady_clock::now();
+    float currentTime = std::chrono::duration<float>(now.time_since_epoch()).count();
+    
+    // Store previous positions before updating
+    std::map<game::core::Entity::ID, RemoteEntity> previousEntities = remoteEntities;
     
     remoteEntities.clear();
     
@@ -31,9 +39,24 @@ void GameClient::onSnapshot(game::network::Packet& packet) {
         if (!packet.read(r) || !packet.read(g) || !packet.read(b) || !packet.read(a)) break;
         
         RemoteEntity entity;
-        entity.position = sf::Vector2f(posX, posY);
         entity.size = sf::Vector2f(sizeX, sizeY);
         entity.color = sf::Color(r, g, b, a);
+        
+        // Interpolation: Store previous position if entity existed before
+        auto prevIt = previousEntities.find(entityID);
+        if (prevIt != previousEntities.end()) {
+            entity.previousPosition = prevIt->second.position;
+            entity.previousSnapshotTime = prevIt->second.snapshotTime;
+            entity.hasPreviousPosition = true;
+        } else {
+            // New entity, no previous position
+            entity.previousPosition = sf::Vector2f(posX, posY);
+            entity.hasPreviousPosition = false;
+        }
+        
+        // Set new position and timestamp
+        entity.position = sf::Vector2f(posX, posY);
+        entity.snapshotTime = currentTime;
         
         // Read HealthComponent (if exists)
         uint8_t hasHealth = 0;

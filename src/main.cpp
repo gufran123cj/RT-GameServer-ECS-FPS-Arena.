@@ -45,9 +45,17 @@ int main() {
     // Network heartbeat timer
     auto lastHeartbeat = std::chrono::steady_clock::now();
     const float heartbeatInterval = Constants::HEARTBEAT_INTERVAL;
+    
+    // Frame timing for interpolation
+    auto lastFrameTime = std::chrono::steady_clock::now();
 
     // Main game loop
     while(window.isOpen()) {
+        // Calculate deltaTime for interpolation
+        auto currentFrameTime = std::chrono::steady_clock::now();
+        model.deltaTime = std::chrono::duration<float>(currentFrameTime - lastFrameTime).count();
+        model.deltaTime = std::min(model.deltaTime, 0.1f);  // Clamp to prevent large jumps
+        lastFrameTime = currentFrameTime;
         // Handle events
         sf::Event event{};
         while(window.pollEvent(event)) {

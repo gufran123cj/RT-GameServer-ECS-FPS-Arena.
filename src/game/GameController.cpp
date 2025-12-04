@@ -46,7 +46,8 @@ void GameController::updatePlayerPosition(GameModel& model) {
         return;
     }
     
-    sf::Vector2f serverPos = it->second.position;
+    // Interpolate position for smooth movement
+    sf::Vector2f serverPos = interpolateEntityPosition(it->second, model.deltaTime);
     
     // Update health from server snapshot
     if (it->second.hasHealth) {
@@ -203,6 +204,35 @@ void GameController::handleShoot(GameModel& model, const sf::RenderWindow& windo
     
     // Send SHOOT packet to server
     model.networkClient.sendShoot(mouseWorld);
+}
+
+sf::Vector2f GameController::interpolateEntityPosition(const GameClient::RemoteEntity& entity, float deltaTime) {
+    // If no previous position, return current position
+    if (!entity.hasPreviousPosition) {
+        return entity.position;
+    }
+    
+    // Calculate interpolation alpha based on time since last snapshot
+    // Snapshot rate is 20 Hz (0.05 seconds per snapshot)
+    const float SNAPSHOT_INTERVAL = 0.05f;  // 20 Hz
+    
+    // Time since last snapshot
+    auto now = std::chrono::steady_clock::now();
+    float currentTime = std::chrono::duration<float>(now.time_since_epoch()).count();
+    float timeSinceSnapshot = currentTime - entity.snapshotTime;
+    
+    // Clamp alpha to [0, 1] - if too much time has passed, use current position
+    float alpha = timeSinceSnapshot / SNAPSHOT_INTERVAL;
+    if (alpha >= 1.0f || alpha < 0.0f) {
+        return entity.position;  // Use current position if too much time passed
+    }
+    
+    // Linear interpolation between previous and current position
+    sf::Vector2f interpolatedPos;
+    interpolatedPos.x = entity.previousPosition.x + (entity.position.x - entity.previousPosition.x) * alpha;
+    interpolatedPos.y = entity.previousPosition.y + (entity.position.y - entity.previousPosition.y) * alpha;
+    
+    return interpolatedPos;
 }
 
 } // namespace game::client

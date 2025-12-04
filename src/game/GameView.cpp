@@ -1,4 +1,5 @@
 #include "GameView.hpp"
+#include "GameController.hpp"
 
 namespace game::client {
 
@@ -30,7 +31,7 @@ void GameView::render(sf::RenderTarget& target, GameModel& model) {
     // model.player pozisyonu updatePlayerPosition() tarafından sadece kendi entity'mizin pozisyonu ile güncelleniyor
     target.draw(model.player);
     
-    // CRITICAL: Draw other players from server snapshot (excluding ourselves)
+    // CRITICAL: Draw other players and projectiles from server snapshot (excluding ourselves)
     // Sadece diğer entity'leri çiz, kendi entity'miz zaten yukarıda çizildi
     if (model.connectedToServer && !model.networkClient.remoteEntities.empty()) {
         for (const auto& [entityID, remoteEntity] : model.networkClient.remoteEntities) {
@@ -41,14 +42,26 @@ void GameView::render(sf::RenderTarget& target, GameModel& model) {
                 continue;
             }
             
-            // Draw other players (remote entities) - bunlar diğer client'ların entity'leri
-            sf::RectangleShape remotePlayer;
-            remotePlayer.setSize(remoteEntity.size);
-            remotePlayer.setPosition(remoteEntity.position);
-            remotePlayer.setFillColor(remoteEntity.color);
-            // Set origin to match local player (bottom-center)
-            remotePlayer.setOrigin(remoteEntity.size.x * 0.5f, remoteEntity.size.y);
-            target.draw(remotePlayer);
+            // Interpolate position for smooth rendering
+            sf::Vector2f renderPos = GameController::interpolateEntityPosition(remoteEntity, model.deltaTime);
+            
+            // Draw remote entities (players and projectiles)
+            // Projectile'lar küçük (2x2), player'lar büyük (3x5) - size'a göre ayırt edilebilir
+            sf::RectangleShape entityShape;
+            entityShape.setSize(remoteEntity.size);
+            entityShape.setPosition(renderPos);  // Use interpolated position
+            entityShape.setFillColor(remoteEntity.color);
+            
+            // Player'lar için origin bottom-center, projectile'lar için center
+            if (remoteEntity.size.y > 4.0f) {
+                // Player (size.y > 4 means it's a player, not a projectile)
+                entityShape.setOrigin(remoteEntity.size.x * 0.5f, remoteEntity.size.y);
+            } else {
+                // Projectile (small size, center origin)
+                entityShape.setOrigin(remoteEntity.size.x * 0.5f, remoteEntity.size.y * 0.5f);
+            }
+            
+            target.draw(entityShape);
         }
     }
     
@@ -82,7 +95,6 @@ void GameView::render(sf::RenderTarget& target, GameModel& model) {
     target.setView(defaultView);
     
     renderHealthBar(target, model);
-    renderKillCount(target, model);
     
     if (model.playerIsDead) {
         renderDeathMessage(target, model);
@@ -199,12 +211,13 @@ void GameView::renderDeathMessage(sf::RenderTarget& target, const GameModel& mod
     // TODO: Add font rendering for "YOU DIED" text
 }
 
-void GameView::renderKillCount(sf::RenderTarget& target, const GameModel& model) {
-    if (!model.connectedToServer) {
-        return;  // Don't show kill count if not connected
+void GameView::renderFPS(sf::RenderTarget& target, const GameModel& model) {
+    // Calculate FPS from deltaTime
+    float fps = 0.0f;
+    if (model.deltaTime > 0.0f) {
+        fps = 1.0f / model.deltaTime;
     }
     
-    // Simple text representation using rectangles (since we don't have font)
     // Position: top-right corner
     sf::Vector2u windowSize = target.getSize();
     const float boxX = static_cast<float>(windowSize.x) - 120.0f;
@@ -212,19 +225,18 @@ void GameView::renderKillCount(sf::RenderTarget& target, const GameModel& model)
     const float boxWidth = 110.0f;
     const float boxHeight = 30.0f;
     
-    // Background box
-    sf::RectangleShape background;
-    background.setSize(sf::Vector2f(boxWidth, boxHeight));
-    background.setPosition(boxX, boxY);
-    background.setFillColor(sf::Color(0, 0, 0, 180));  // Semi-transparent black
-    background.setOutlineThickness(2.0f);
-    background.setOutlineColor(sf::Color::White);
-    target.draw(background);
+    // Text box style (simple box, no bar, no indicator)
+    sf::RectangleShape textBox;
+    textBox.setSize(sf::Vector2f(boxWidth, boxHeight));
+    textBox.setPosition(boxX, boxY);
+    textBox.setFillColor(sf::Color(0, 0, 0, 200));  // Semi-transparent black
+    textBox.setOutlineThickness(2.0f);
+    textBox.setOutlineColor(sf::Color::White);
+    target.draw(textBox);
     
-    // Kill count text would go here if we had a font
-    // For now, we'll use colored rectangles to represent the number
-    // TODO: Add font rendering for kill count display
-    // Format: "Kills: X"
+    // Note: FPS text would be displayed here if we had a font
+    // For now, just the text box is shown
+    // Format would be: "FPS: XX"
 }
 
 } // namespace game::client

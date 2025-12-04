@@ -52,6 +52,9 @@ public:
     // Player kill count (from server snapshot)
     int playerKillCount = 0;
     
+    // Frame timing for interpolation
+    float deltaTime = 0.016f;  // Default 60 FPS (will be updated each frame)
+    
     /**
      * Initialize game from LDtk project
      */

@@ -49,6 +49,14 @@ public:
      * @param camera The camera view (for world position conversion)
      */
     static void handleShoot(GameModel& model, const sf::RenderWindow& window, const sf::View& camera);
+    
+    /**
+     * Interpolate entity position for smooth movement
+     * @param entity Remote entity with position data
+     * @param deltaTime Time since last frame
+     * @return Interpolated position
+     */
+    static sf::Vector2f interpolateEntityPosition(const GameClient::RemoteEntity& entity, float deltaTime);
 };
 
 } // namespace game::client
